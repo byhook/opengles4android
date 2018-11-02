@@ -1,5 +1,6 @@
 package com.onzhou.opengles.shader;
 
+import android.graphics.Color;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +12,7 @@ import com.onzhou.opengles.base.AbsBaseActivity;
  * @date: 2018-11-02
  * @description:
  */
-public class ShaderActivity extends AbsBaseActivity {
+public class RendererActivity extends AbsBaseActivity {
 
     /**
      *
@@ -28,8 +29,8 @@ public class ShaderActivity extends AbsBaseActivity {
     private void setupViews() {
         mGLSurfaceView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
         //设置版本
-        mGLSurfaceView.setEGLContextClientVersion(2);
-        GLSurfaceView.Renderer  renderer = new TriangleRenderer(this);
+        mGLSurfaceView.setEGLContextClientVersion(3);
+        GLSurfaceView.Renderer  renderer = new ColorRenderer(Color.GRAY);
         mGLSurfaceView.setRenderer(renderer);
     }
 

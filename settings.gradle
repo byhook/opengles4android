@@ -1,1 +1,1 @@
-include ':common', ':opengles-shader'
+include ':common', ':opengles-renderer'
