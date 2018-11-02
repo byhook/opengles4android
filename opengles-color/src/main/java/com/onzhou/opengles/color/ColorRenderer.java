@@ -1,4 +1,4 @@
-package com.onzhou.opengles.shader;
+package com.onzhou.opengles.color;
 
 import android.content.Context;
 import android.graphics.Color;

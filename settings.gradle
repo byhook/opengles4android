@@ -1,1 +1,3 @@
-include ':common', ':opengles-renderer'
+include ':common'
+include ':opengles-color'
+include ':opengles-renderer'
