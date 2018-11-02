@@ -30,7 +30,7 @@ public class ColorActivity extends AbsBaseActivity {
     private void setupViews() {
         mGLSurfaceView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
         //设置版本
-        mGLSurfaceView.setEGLContextClientVersion(3);
+        mGLSurfaceView.setEGLContextClientVersion(2);
         GLSurfaceView.Renderer renderer = new NativeColorRenderer(Color.GRAY);
         mGLSurfaceView.setRenderer(renderer);
     }

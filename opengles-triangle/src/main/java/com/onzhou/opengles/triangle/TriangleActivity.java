@@ -1,18 +1,18 @@
-package com.onzhou.opengles.shader;
+package com.onzhou.opengles.triangle;
 
-import android.graphics.Color;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
+import com.onzhou.opengles.shader.R;
 
 /**
  * @anchor: andy
  * @date: 2018-11-02
  * @description:
  */
-public class RendererActivity extends AbsBaseActivity {
+public class TriangleActivity extends AbsBaseActivity {
 
     /**
      *
@@ -22,15 +22,15 @@ public class RendererActivity extends AbsBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shader);
+        setContentView(R.layout.activity_triangle);
         setupViews();
     }
 
     private void setupViews() {
         mGLSurfaceView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
         //设置版本
-        mGLSurfaceView.setEGLContextClientVersion(3);
-        GLSurfaceView.Renderer renderer = new TriangleRenderer(this);
+        mGLSurfaceView.setEGLContextClientVersion(2);
+        GLSurfaceView.Renderer renderer = new NativeTriangleRenderer();
         mGLSurfaceView.setRenderer(renderer);
     }
 

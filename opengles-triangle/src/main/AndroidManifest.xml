@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.onzhou.opengles.shader">
 
-    <uses-feature android:glEsVersion="0x00030000" android:required="true" />
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".RendererActivity">
+        <activity android:name="com.onzhou.opengles.triangle.TriangleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

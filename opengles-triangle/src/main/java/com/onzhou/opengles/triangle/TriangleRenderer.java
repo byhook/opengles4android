@@ -1,9 +1,10 @@
-package com.onzhou.opengles.shader;
+package com.onzhou.opengles.triangle;
 
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 
+import com.onzhou.opengles.shader.R;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -23,7 +24,7 @@ public class TriangleRenderer implements GLSurfaceView.Renderer {
 
     private static final int BYTES_PER_FLOAT = 4;
 
-    private static final int POSITION_COMPONENT_COUNT = 2;
+    private static final int POSITION_COMPONENT_COUNT = 3;
 
     private final FloatBuffer vertexBuffer;
 
@@ -39,12 +40,12 @@ public class TriangleRenderer implements GLSurfaceView.Renderer {
     private int aPositionLocation;
 
     private float[] tableVerticesWithTriangles = {
-            -0.5f, -0.5f,
-            0.5f, 0.5f,
-            -0.5f, 0.5f
+            0.0f, 0.5f, 0.0f,
+            -0.5f, -0.5f, 0.0f,
+            0.5f, -0.5f, 0.0f
     };
 
-    float color[] = { 0.0f, 0.0f, 0.8f, 1.0f };
+    float color[] = {0.0f, 0.5f, 0.5f, -0.5f};
 
     public TriangleRenderer(Context context) {
         this.mContext = context;
@@ -95,7 +96,7 @@ public class TriangleRenderer implements GLSurfaceView.Renderer {
         //设置绘制三角形的颜色
         GLES20.glUniform4fv(aPositionLocation, 1, color, 0);
         //绘制三角形
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 6);
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 3);
         //禁止顶点数组的句柄
         GLES20.glDisableVertexAttribArray(aPositionLocation);
     }
