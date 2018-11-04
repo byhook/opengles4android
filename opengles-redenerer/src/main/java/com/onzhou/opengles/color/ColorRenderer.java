@@ -18,7 +18,7 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * @anchor: andy
  * @date: 2018-11-02
- * @description: 自定义三角形渲染器
+ * @description:
  */
 public class ColorRenderer implements GLSurfaceView.Renderer {
 
@@ -31,15 +31,16 @@ public class ColorRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         //设置背景颜色
-        float redf = (float) Color.red(color) / 255;
-        float greenf = (float) Color.green(color) / 255;
-        float bluef = (float) Color.blue(color) / 255;
-        float alphaf = (float) Color.alpha(color) / 255;
-        GLES20.glClearColor(redf, greenf, bluef, alphaf);
+        float redF = (float) Color.red(color) / 255;
+        float greenF = (float) Color.green(color) / 255;
+        float blueF = (float) Color.blue(color) / 255;
+        float alphaF = (float) Color.alpha(color) / 255;
+        GLES20.glClearColor(redF, greenF, blueF, alphaF);
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        //设置视图窗口
         GLES20.glViewport(0, 0, width, height);
     }
 

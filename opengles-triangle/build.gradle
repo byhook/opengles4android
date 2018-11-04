@@ -15,6 +15,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
+                arguments '-DANDROID_STL=c++_static'
             }
             ndk {
                 abiFilters "armeabi-v7a"

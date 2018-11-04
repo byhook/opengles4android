@@ -29,7 +29,7 @@ public class TriangleActivity extends AbsBaseActivity {
     private void setupViews() {
         mGLSurfaceView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
         //设置版本
-        mGLSurfaceView.setEGLContextClientVersion(2);
+        mGLSurfaceView.setEGLContextClientVersion(3);
         GLSurfaceView.Renderer renderer = new NativeTriangleRenderer();
         mGLSurfaceView.setRenderer(renderer);
     }
