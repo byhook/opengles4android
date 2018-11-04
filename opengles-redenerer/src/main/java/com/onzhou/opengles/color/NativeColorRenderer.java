@@ -1,7 +1,6 @@
 package com.onzhou.opengles.color;
 
 import android.graphics.Color;
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 
 import javax.microedition.khronos.egl.EGLConfig;

@@ -2,7 +2,7 @@ package com.onzhou.opengles.color;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.opengl.GLES20;
+import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
 import com.onzhou.opengles.utils.ResReadUtils;
@@ -35,18 +35,18 @@ public class ColorRenderer implements GLSurfaceView.Renderer {
         float greenF = (float) Color.green(color) / 255;
         float blueF = (float) Color.blue(color) / 255;
         float alphaF = (float) Color.alpha(color) / 255;
-        GLES20.glClearColor(redF, greenF, blueF, alphaF);
+        GLES30.glClearColor(redF, greenF, blueF, alphaF);
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         //设置视图窗口
-        GLES20.glViewport(0, 0, width, height);
+        GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
         //把颜色缓冲区设置为我们预设的颜色
-        GLES20.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        GLES30.glClear(GL10.GL_COLOR_BUFFER_BIT);
     }
 }

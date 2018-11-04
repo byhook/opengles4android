@@ -1,20 +1,18 @@
 package com.onzhou.opengles.main;
 
-import android.graphics.Color;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
-import com.onzhou.opengles.color.NativeColorRenderer;
-import com.onzhou.opengles.shader.R;
+import com.onzhou.opengles.line.PointLineRenderer;
 
 /**
  * @anchor: andy
  * @date: 2018-11-02
  * @description:
  */
-public class RendererActivity extends AbsBaseActivity {
+public class GLSurfaceActivity extends AbsBaseActivity {
 
     private GLSurfaceView mGLSurfaceView;
 
@@ -30,7 +28,7 @@ public class RendererActivity extends AbsBaseActivity {
         //设置版本
         mGLSurfaceView.setEGLContextClientVersion(3);
         //GLSurfaceView.Renderer renderer = new ColorRenderer(Color.GRAY);
-        GLSurfaceView.Renderer renderer = new NativeColorRenderer(Color.GRAY);
+        GLSurfaceView.Renderer renderer = new PointLineRenderer();
         mGLSurfaceView.setRenderer(renderer);
     }
 
