@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
-import com.onzhou.opengles.line.PointLineRenderer;
+import com.onzhou.opengles.simple.SimpleRenderer;
 
 /**
  * @anchor: andy
@@ -28,7 +28,7 @@ public class GLSurfaceActivity extends AbsBaseActivity {
         //设置版本
         mGLSurfaceView.setEGLContextClientVersion(3);
         //GLSurfaceView.Renderer renderer = new ColorRenderer(Color.GRAY);
-        GLSurfaceView.Renderer renderer = new PointLineRenderer();
+        GLSurfaceView.Renderer renderer = new SimpleRenderer();
         mGLSurfaceView.setRenderer(renderer);
     }
 

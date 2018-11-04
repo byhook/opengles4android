@@ -1,11 +1,8 @@
-package com.onzhou.opengles.line;
+package com.onzhou.opengles.simple;
 
-import android.opengl.GLES30;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
-import com.onzhou.opengles.shader.R;
-import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
 import java.nio.ByteBuffer;
@@ -20,7 +17,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-02
  * @description:
  */
-public class PointLineRenderer implements GLSurfaceView.Renderer {
+public class SimpleRenderer implements GLSurfaceView.Renderer {
 
     private static final int POSITION_COMPONENT_COUNT = 3;
 
@@ -56,7 +53,7 @@ public class PointLineRenderer implements GLSurfaceView.Renderer {
                     + "fragColor = vec4(1.0,1.0,1.0,1.0); \n"
                     + "}\n";
 
-    public PointLineRenderer() {
+    public SimpleRenderer() {
         //分配内存空间,每个浮点型占4字节空间
         vertexBuffer = ByteBuffer.allocateDirect(vertexPoints.length * 4)
                 .order(ByteOrder.nativeOrder())
@@ -96,7 +93,7 @@ public class PointLineRenderer implements GLSurfaceView.Renderer {
         //启用顶点的句柄
         GLES30.glEnableVertexAttribArray(0);
 
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 0, 3);
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, 3);
 
         //禁止顶点数组的句柄
         GLES30.glDisableVertexAttribArray(0);
