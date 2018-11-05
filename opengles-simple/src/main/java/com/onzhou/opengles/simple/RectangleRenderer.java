@@ -24,14 +24,27 @@ public class RectangleRenderer implements GLSurfaceView.Renderer {
 
     private int mProgram;
 
+    private static final int POSITION_COMPONENT_COUNT = 2;
+    private static final int COLOR_COMPONENT_COUNT = 3;
+
+    private static final int BYTES_PER_FLOAT = 4;
+
+    private static final int STRIDE =
+            (POSITION_COMPONENT_COUNT + COLOR_COMPONENT_COUNT) * BYTES_PER_FLOAT;
+
     /**
      * 点的坐标
      */
     private float[] vertexPoints = new float[]{
-            -0.5f, 0.5f, 0.0f,
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            0.5f, 0.5f, 0.0f
+            0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+            -0.5f, -0.8f, 1.0f, 1.0f, 1.0f,
+            0.5f, -0.8f, 1.0f, 1.0f, 1.0f,
+            0.5f, 0.8f, 1.0f, 1.0f, 1.0f,
+            -0.5f, 0.8f, 1.0f, 1.0f, 1.0f,
+            -0.5f, -0.8f, 1.0f, 1.0f, 1.0f,
+
+            0.0f, 0.25f, 0.5f, 0.5f, 0.5f,
+            0.0f, -0.25f, 0.5f, 0.5f, 0.5f,
     };
 
     private final float[] mMatrix = new float[16];
@@ -42,21 +55,28 @@ public class RectangleRenderer implements GLSurfaceView.Renderer {
     private String vertextShader =
             "#version 300 es \n" +
                     "layout (location = 0) in vec4 vPosition;\n"
+                    + "layout (location = 1) in vec4 aColor;\n"
                     + "uniform mat4 u_Matrix;\n"
+                    + "out vec4 vColor;\n"
                     + "void main() { \n"
                     + "gl_Position  = u_Matrix * vPosition;\n"
                     + "gl_PointSize = 10.0;\n"
+                    + "vColor = aColor;\n"
                     + "}\n";
 
     private String fragmentShader =
             "#version 300 es \n" +
                     "precision mediump float;\n"
+                    + "in vec4 vColor;\n"
                     + "out vec4 fragColor;\n"
                     + "void main() { \n"
-                    + "fragColor = vec4(0.8,0.5,0.5,1.0); \n"
+                    + "fragColor = vColor;\n"
                     + "}\n";
 
     private int uMatrixLocation;
+
+    private int aPositionLocation;
+    private int aColorLocation;
 
     public RectangleRenderer() {
         //分配内存空间,每个浮点型占4字节空间
@@ -82,6 +102,22 @@ public class RectangleRenderer implements GLSurfaceView.Renderer {
         GLES30.glUseProgram(mProgram);
 
         uMatrixLocation = GLES30.glGetUniformLocation(mProgram, "u_Matrix");
+
+        aPositionLocation = GLES30.glGetAttribLocation(mProgram, "vPosition");
+        aColorLocation = GLES30.glGetAttribLocation(mProgram, "aColor");
+
+        vertexBuffer.position(0);
+        GLES30.glVertexAttribPointer(aPositionLocation,
+                POSITION_COMPONENT_COUNT, GLES30.GL_FLOAT, false, STRIDE, vertexBuffer);
+
+        GLES30.glEnableVertexAttribArray(aPositionLocation);
+
+        vertexBuffer.position(POSITION_COMPONENT_COUNT);
+        GLES30.glVertexAttribPointer(aColorLocation,
+                COLOR_COMPONENT_COUNT, GLES30.GL_FLOAT, false, STRIDE, vertexBuffer);
+
+        GLES30.glEnableVertexAttribArray(aColorLocation);
+
     }
 
     @Override
@@ -107,14 +143,11 @@ public class RectangleRenderer implements GLSurfaceView.Renderer {
 
         GLES30.glUniformMatrix4fv(uMatrixLocation, 1, false, mMatrix, 0);
 
-        //准备坐标数据
-        GLES30.glVertexAttribPointer(0, 3, GLES30.GL_FLOAT, false, 0, vertexBuffer);
-        //启用顶点的句柄
-        GLES30.glEnableVertexAttribArray(0);
+        //绘制矩形
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, 6);
 
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_FAN, 0, 4);
+        //绘制两个点
+        GLES30.glDrawArrays(GLES30.GL_POINTS, 6, 2);
 
-        //禁止顶点数组的句柄
-        GLES30.glDisableVertexAttribArray(0);
     }
 }

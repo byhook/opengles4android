@@ -3,9 +3,7 @@ package com.onzhou.opengles.main;
 import android.opengl.GLSurfaceView;
 
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
-import com.onzhou.opengles.simple.NativeSimpleRenderer;
 import com.onzhou.opengles.simple.RectangleRenderer;
-import com.onzhou.opengles.simple.SimpleRenderer;
 
 /**
  * @anchor: andy
