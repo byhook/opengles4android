@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="main.SimpleActivity">
+        <activity android:name="com.onzhou.opengles.main.SimpleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

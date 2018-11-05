@@ -1,10 +1,10 @@
-package main;
+package com.onzhou.opengles.main;
 
 import android.opengl.GLSurfaceView;
 
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
 import com.onzhou.opengles.simple.NativeSimpleRenderer;
-import com.onzhou.opengles.triangle.NativeTriangleRenderer;
+import com.onzhou.opengles.simple.SimpleRenderer;
 
 /**
  * @anchor: andy
@@ -15,7 +15,7 @@ public class SimpleActivity extends AbsGLSurfaceActivity {
 
     @Override
     protected GLSurfaceView.Renderer bindRenderer() {
-        return new NativeSimpleRenderer();
+        return new SimpleRenderer();
     }
 
 }

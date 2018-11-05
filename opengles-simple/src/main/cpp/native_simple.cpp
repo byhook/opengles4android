@@ -64,18 +64,28 @@ const GLfloat TRIANGLE_VERTICES[] = {0.0f, 0.5f, 0.0f,
 const char VERTEX_SHADER[] =
         "#version 300 es \n"
                 "layout (location = 0) in vec4 vPosition;\n"
+                "layout (location = 1) in vec4 aColor;\n"
+                "out vec4 vColor;\n"
                 "void main() { \n"
                 "gl_Position  = vPosition;\n"
                 "gl_PointSize = 10.0;\n"
+                "vColor = aColor;\n"
                 "}\n";
 
 const char FRAGMENT_SHADER[] =
         "#version 300 es \n"
                 "precision mediump float;\n"
+                "in vec4 vColor;\n"
                 "out vec4 fragColor;\n"
                 "void main() { \n"
-                "fragColor = vec4(0.8,0.5,0.5,1.0); \n"
+                "fragColor = vColor;\n"
                 "}\n";
+
+float color[] = {
+        0.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f, 1.0f
+};
 
 GLuint CompileShader(GLenum type, const char *shaderCode) {
     GLint shader = glCreateShader(type);
@@ -150,8 +160,13 @@ JNIEXPORT void JNICALL onDrawFrame(JNIEnv *env, jobject obj) {
     //启用顶点的句柄
     glEnableVertexAttribArray(0);
 
+    //绘制三角形颜色
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 4, GL_FLOAT, false, 0, color);
+
     //绘制
     glDrawArrays(GL_TRIANGLES, 0, 3);
     //禁止顶点数组的句柄
     glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
 }
