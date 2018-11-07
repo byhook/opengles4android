@@ -3,8 +3,10 @@ package com.onzhou.opengles.main;
 import android.opengl.GLSurfaceView;
 
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
+import com.onzhou.opengles.simple.EnableVertexRenderer;
 import com.onzhou.opengles.simple.RectangleRenderer;
 import com.onzhou.opengles.simple.UniformRenderer;
+import com.onzhou.opengles.simple.VertexPointerRenderer;
 
 /**
  * @anchor: andy
@@ -15,7 +17,7 @@ public class SimpleActivity extends AbsGLSurfaceActivity {
 
     @Override
     protected GLSurfaceView.Renderer bindRenderer() {
-        return new UniformRenderer();
+        return new EnableVertexRenderer();
     }
 
 }
