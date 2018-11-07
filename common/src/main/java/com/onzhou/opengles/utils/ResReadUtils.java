@@ -3,6 +3,8 @@ package com.onzhou.opengles.utils;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.onzhou.opengles.core.AppCore;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,14 +20,13 @@ public class ResReadUtils {
     /**
      * 读取资源
      *
-     * @param context
      * @param resourceId
      * @return
      */
-    public static String readResource(Context context, int resourceId) {
+    public static String readResource(int resourceId) {
         StringBuilder builder = new StringBuilder();
         try {
-            InputStream inputStream = context.getResources().openRawResource(resourceId);
+            InputStream inputStream = AppCore.getInstance().getResources().openRawResource(resourceId);
             InputStreamReader streamReader = new InputStreamReader(inputStream);
 
             BufferedReader bufferedReader = new BufferedReader(streamReader);
