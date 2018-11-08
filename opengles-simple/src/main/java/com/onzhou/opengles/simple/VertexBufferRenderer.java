@@ -68,17 +68,20 @@ public class VertexBufferRenderer implements GLSurfaceView.Renderer {
         final int fragmentShaderId = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_buffer_shader));
         //鏈接程序片段
         mProgram = ShaderUtils.linkProgram(vertexShaderId, fragmentShaderId);
-        //使用程序片段
-        GLES30.glUseProgram(mProgram);
 
-        //生成1个缓冲ID
+        //1. 生成1个缓冲ID
         GLES30.glGenBuffers(1, vboIds, 0);
-        //绑定到顶点坐标数据缓冲
+
+        //2. 绑定到顶点坐标数据缓冲
         GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, vboIds[0]);
-        //向顶点坐标数据缓冲送入数据
+        //3. 向顶点坐标数据缓冲送入数据
         GLES30.glBufferData(GLES30.GL_ARRAY_BUFFER, vertexPoints.length * 4, vertexBuffer, GLES30.GL_STATIC_DRAW);
 
-        
+        //4. 将顶点位置数据送入渲染管线
+        GLES30.glVertexAttribPointer(VERTEX_POS_INDEX, VERTEX_POS_SIZE, GLES30.GL_FLOAT, false, VERTEX_STRIDE, 0);
+        //5. 启用顶点位置属性
+        GLES30.glEnableVertexAttribArray(VERTEX_POS_INDEX);
+
     }
 
     @Override
@@ -89,14 +92,13 @@ public class VertexBufferRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl) {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
-        //启用顶点位置属性
-        GLES30.glEnableVertexAttribArray(VERTEX_POS_INDEX);
-        //将顶点位置数据送入渲染管线
-        GLES30.glVertexAttribPointer(VERTEX_POS_INDEX, VERTEX_POS_SIZE, GLES30.GL_FLOAT, false, VERTEX_STRIDE, 0);
-        //开始绘制三角形
+        //6. 使用程序片段
+        GLES30.glUseProgram(mProgram);
+
+        //7. 开始绘制三角形
         GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, 3);
 
-        //禁用顶点属性
-        GLES30.glDisableVertexAttribArray(VERTEX_POS_INDEX);
+        //8. 解绑VBO
+        GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER,0);
     }
 }

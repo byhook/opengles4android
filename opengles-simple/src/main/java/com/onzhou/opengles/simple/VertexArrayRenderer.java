@@ -17,7 +17,7 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * @anchor: andy
  * @date: 2018-11-02
- * @description: 顶点缓冲区
+ * @description: 顶点数组对象
  */
 public class VertexArrayRenderer implements GLSurfaceView.Renderer {
 
