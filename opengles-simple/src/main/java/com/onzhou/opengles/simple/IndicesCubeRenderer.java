@@ -10,6 +10,7 @@ import com.onzhou.opengles.utils.ShaderUtils;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -17,11 +18,13 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * @anchor: andy
  * @date: 2018-11-09
- * @description:
+ * @description: 基于索引法绘制立方体
  */
-public class ColorCubeRenderer implements GLSurfaceView.Renderer {
+public class IndicesCubeRenderer implements GLSurfaceView.Renderer {
 
     private final FloatBuffer vertexBuffer, colorBuffer;
+
+    private final ShortBuffer indicesBuffer;
 
     private int mProgram;
 
@@ -33,108 +36,50 @@ public class ColorCubeRenderer implements GLSurfaceView.Renderer {
      * 点的坐标
      */
     private float[] vertexPoints = new float[]{
-            //背面矩形
-            0.75f, 0.75f, 0.0f, //V5
-            -0.25f, 0.75f, 0.0f, //V6
-            -0.25f, -0.25f, 0.0f, //V7
-            0.75f, 0.75f, 0.0f, //V5
-            -0.25f, -0.25f, 0.0f, //V7
-            0.75f, -0.25f, 0.0f, //V4
-
-            //左侧矩形
-            -0.25f, 0.75f, 0.0f, //V6
-            -0.75f, 0.25f, 0.0f, //V1
-            -0.75f, -0.75f, 0.0f, //V2
-            -0.25f, 0.75f, 0.0f, //V6
-            -0.75f, -0.75f, 0.0f, //V2
-            -0.25f, -0.25f, 0.0f, //V7
-
-            //底部矩形
-            0.75f, -0.25f, 0.0f, //V4
-            -0.25f, -0.25f, 0.0f, //V7
-            -0.75f, -0.75f, 0.0f, //V2
-            0.75f, -0.25f, 0.0f, //V4
-            -0.75f, -0.75f, 0.0f, //V2
-            0.25f, -0.75f, 0.0f, //V3
-
             //正面矩形
             0.25f, 0.25f, 0.0f,  //V0
             -0.75f, 0.25f, 0.0f, //V1
             -0.75f, -0.75f, 0.0f, //V2
-            0.25f, 0.25f, 0.0f,  //V0
-            -0.75f, -0.75f, 0.0f, //V2
             0.25f, -0.75f, 0.0f, //V3
 
-            //右侧矩形
-            0.75f, 0.75f, 0.0f, //V5
-            0.25f, 0.25f, 0.0f, //V0
-            0.25f, -0.75f, 0.0f, //V3
-            0.75f, 0.75f, 0.0f, //V5
-            0.25f, -0.75f, 0.0f, //V3
+            //背面矩形
             0.75f, -0.25f, 0.0f, //V4
-
-            //顶部矩形
             0.75f, 0.75f, 0.0f, //V5
             -0.25f, 0.75f, 0.0f, //V6
-            -0.75f, 0.25f, 0.0f, //V1
-            0.75f, 0.75f, 0.0f, //V5
-            -0.75f, 0.25f, 0.0f, //V1
-            0.25f, 0.25f, 0.0f  //V0
+            -0.25f, -0.25f, 0.0f //V7
     };
 
+    /**
+     * 定义索引
+     */
+    private short[] indices = {
+            //背面
+            5, 6, 7, 5, 7, 4,
+            //左侧
+            6, 1, 2, 6, 2, 7,
+            //底部
+            4, 7, 2, 4, 2, 3,
+            //顶面
+            5, 6, 7, 5, 7, 4,
+            //右侧
+            5, 0, 3, 5, 3, 4,
+            //正面
+            0, 1, 2, 0, 2, 3
+    };
 
     //立方体的顶点颜色
     private float[] colors = {
-            //背面矩形颜色
-            1f, 0f, 1f, 1f,
-            1f, 0f, 1f, 1f,
-            1f, 0f, 1f, 1f,
-            1f, 0f, 1f, 1f,
-            1f, 0f, 1f, 1f,
-            1f, 0f, 1f, 1f,
-
-            //左侧矩形颜色
-            0f, 1f, 0f, 1f,
-            0f, 1f, 0f, 1f,
-            0f, 1f, 0f, 1f,
-            0f, 1f, 0f, 1f,
-            0f, 1f, 0f, 1f,
-            0f, 1f, 0f, 1f,
-
-            //底部矩形颜色
-            1f, 0f, 0.5f, 1f,
-            1f, 0f, 0.5f, 1f,
-            1f, 0f, 0.5f, 1f,
-            1f, 0f, 0.5f, 1f,
-            1f, 0f, 0.5f, 1f,
-            1f, 0f, 0.5f, 1f,
-
-            //正面矩形颜色
-            0.2f, 0.3f, 0.2f, 1f,
-            0.2f, 0.3f, 0.2f, 1f,
-            0.2f, 0.3f, 0.2f, 1f,
-            0.2f, 0.3f, 0.2f, 1f,
-            0.2f, 0.3f, 0.2f, 1f,
-            0.2f, 0.3f, 0.2f, 1f,
-
-            //右侧矩形颜色
-            0.1f, 0.2f, 0.3f, 1f,
-            0.1f, 0.2f, 0.3f, 1f,
-            0.1f, 0.2f, 0.3f, 1f,
-            0.1f, 0.2f, 0.3f, 1f,
-            0.1f, 0.2f, 0.3f, 1f,
-            0.1f, 0.2f, 0.3f, 1f,
-
-            //顶部矩形颜色
-            0.3f, 0.4f, 0.5f, 1f,
-            0.3f, 0.4f, 0.5f, 1f,
-            0.3f, 0.4f, 0.5f, 1f,
-            0.3f, 0.4f, 0.5f, 1f,
-            0.3f, 0.4f, 0.5f, 1f,
-            0.3f, 0.4f, 0.5f, 1f
+            0.3f, 0.4f, 0.5f, 1f,   //V0
+            0.3f, 0.4f, 0.5f, 1f,   //V1
+            0.3f, 0.4f, 0.5f, 1f,   //V2
+            0.3f, 0.4f, 0.5f, 1f,   //V3
+            0.6f, 0.5f, 0.4f, 1f,   //V4
+            0.6f, 0.5f, 0.4f, 1f,   //V5
+            0.6f, 0.5f, 0.4f, 1f,   //V6
+            0.6f, 0.5f, 0.4f, 1f    //V7
     };
 
-    public ColorCubeRenderer() {
+    public IndicesCubeRenderer() {
         //分配内存空间,每个浮点型占4字节空间
         vertexBuffer = ByteBuffer.allocateDirect(vertexPoints.length * 4)
                 .order(ByteOrder.nativeOrder())
@@ -150,6 +95,14 @@ public class ColorCubeRenderer implements GLSurfaceView.Renderer {
         //传入指定的数据
         colorBuffer.put(colors);
         colorBuffer.position(0);
+
+        //分配内存空间,每个浮点型占4字节空间
+        indicesBuffer = ByteBuffer.allocateDirect(indices.length * 4)
+                .order(ByteOrder.nativeOrder())
+                .asShortBuffer();
+        //传入指定的数据
+        indicesBuffer.put(indices);
+        indicesBuffer.position(0);
     }
 
     @Override
@@ -168,7 +121,6 @@ public class ColorCubeRenderer implements GLSurfaceView.Renderer {
         //启用位置顶点属性
         GLES30.glEnableVertexAttribArray(0);
 
-
         GLES30.glVertexAttribPointer(1, VERTEX_COLOR_SIZE, GLES30.GL_FLOAT, false, 0, colorBuffer);
         //启用颜色顶点属性
         GLES30.glEnableVertexAttribArray(1);
@@ -178,14 +130,13 @@ public class ColorCubeRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         GLES30.glViewport(0, 0, width, height);
-
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
 
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, 36);
+        GLES30.glDrawElements(GL10.GL_TRIANGLES, indices.length, GL10.GL_UNSIGNED_SHORT, indicesBuffer);
 
     }
 }
