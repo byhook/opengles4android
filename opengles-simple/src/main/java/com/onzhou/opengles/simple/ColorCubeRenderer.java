@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-09
  * @description:
  */
-public class LineCubeRenderer implements GLSurfaceView.Renderer {
+public class ColorCubeRenderer implements GLSurfaceView.Renderer {
 
     private final FloatBuffer vertexBuffer;
 
@@ -31,30 +31,56 @@ public class LineCubeRenderer implements GLSurfaceView.Renderer {
      * 点的坐标
      */
     private float[] vertexPoints = new float[]{
+            //正面矩形
             0.25f, 0.25f, 0.0f,  //V0
             -0.75f, 0.25f, 0.0f, //V1
             -0.75f, -0.75f, 0.0f, //V2
+            0.25f, 0.25f, 0.0f,  //V0
+            -0.75f, -0.75f, 0.0f, //V2
             0.25f, -0.75f, 0.0f, //V3
 
-            0.75f, -0.25f, 0.0f, //V4
+            //背面矩形
             0.75f, 0.75f, 0.0f, //V5
             -0.25f, 0.75f, 0.0f, //V6
             -0.25f, -0.25f, 0.0f, //V7
+            0.75f, 0.75f, 0.0f, //V5
+            -0.25f, -0.25f, 0.0f, //V7
+            0.75f, -0.25f, 0.0f, //V4
 
+            //左侧矩形
             -0.25f, 0.75f, 0.0f, //V6
             -0.75f, 0.25f, 0.0f, //V1
+            -0.75f, -0.75f, 0.0f, //V2
+            -0.25f, 0.75f, 0.0f, //V6
+            -0.75f, -0.75f, 0.0f, //V2
+            -0.25f, -0.25f, 0.0f, //V7
 
+            //右侧矩形
             0.75f, 0.75f, 0.0f, //V5
             0.25f, 0.25f, 0.0f, //V0
+            0.25f, -0.75f, 0.0f, //V3
+            0.75f, 0.75f, 0.0f, //V5
+            0.25f, -0.75f, 0.0f, //V3
+            0.75f, -0.25f, 0.0f, //V4
 
+            //顶部矩形
+            0.75f, 0.75f, 0.0f, //V5
+            -0.25f, 0.75f, 0.0f, //V6
+            -0.75f, 0.25f, 0.0f, //V1
+            0.75f, 0.75f, 0.0f, //V5
+            -0.75f, 0.25f, 0.0f, //V1
+            0.25f, 0.25f, 0.0f,  //V0
+
+            //底部矩形
+            0.75f, -0.25f, 0.0f, //V4
             -0.25f, -0.25f, 0.0f, //V7
             -0.75f, -0.75f, 0.0f, //V2
-
             0.75f, -0.25f, 0.0f, //V4
+            -0.75f, -0.75f, 0.0f, //V2
             0.25f, -0.75f, 0.0f //V3
     };
 
-    public LineCubeRenderer() {
+    public ColorCubeRenderer() {
         //分配内存空间,每个浮点型占4字节空间
         vertexBuffer = ByteBuffer.allocateDirect(vertexPoints.length * 4)
                 .order(ByteOrder.nativeOrder())
@@ -69,8 +95,8 @@ public class LineCubeRenderer implements GLSurfaceView.Renderer {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
-        final int vertexShaderId = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.vertex_linecube_shader));
-        final int fragmentShaderId = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_linecube_shader));
+        final int vertexShaderId = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.vertex_colorcube_shader));
+        final int fragmentShaderId = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_colorcube_shader));
         //链接程序片段
         mProgram = ShaderUtils.linkProgram(vertexShaderId, fragmentShaderId);
         //使用程序片段
@@ -91,14 +117,7 @@ public class LineCubeRenderer implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl) {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
 
-        //指定线宽
-        GLES30.glLineWidth(5);
-
-        GLES30.glDrawArrays(GLES30.GL_LINE_LOOP, 0, 4);
-
-        GLES30.glDrawArrays(GLES30.GL_LINE_LOOP, 4, 4);
-
-        GLES30.glDrawArrays(GLES30.GL_LINES, 8, 8);
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, 36);
 
     }
 }

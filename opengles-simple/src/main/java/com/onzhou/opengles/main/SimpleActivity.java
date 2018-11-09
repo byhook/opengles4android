@@ -3,6 +3,7 @@ package com.onzhou.opengles.main;
 import android.opengl.GLSurfaceView;
 
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
+import com.onzhou.opengles.simple.ColorCubeRenderer;
 import com.onzhou.opengles.simple.LineCubeRenderer;
 
 /**
@@ -14,7 +15,7 @@ public class SimpleActivity extends AbsGLSurfaceActivity {
 
     @Override
     protected GLSurfaceView.Renderer bindRenderer() {
-        return new LineCubeRenderer();
+        return new ColorCubeRenderer();
     }
 
 }
