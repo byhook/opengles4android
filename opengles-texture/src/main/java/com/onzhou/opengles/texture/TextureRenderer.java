@@ -7,6 +7,7 @@ import android.opengl.GLES20;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
+import android.opengl.Matrix;
 import android.util.Log;
 
 import com.onzhou.opengles.core.AppCore;
@@ -71,6 +72,10 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
             0, 4, 1
     };
 
+    private int uMatrixLocation;
+
+    private float[] mMatrix = new float[16];
+
     public TextureRenderer() {
         //分配内存空间,每个浮点型占4字节空间
         vertexBuffer = ByteBuffer.allocateDirect(POSITION_VERTEX.length * 4)
@@ -104,6 +109,8 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
         //链接程序片段
         mProgram = ShaderUtils.linkProgram(vertexShaderId, fragmentShaderId);
 
+        uMatrixLocation = GLES30.glGetUniformLocation(mProgram, "u_Matrix");
+
         //加载纹理
         textureId = TextureUtils.loadTexture(AppCore.getInstance().getContext(), R.drawable.main);
     }
@@ -111,6 +118,18 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         GLES30.glViewport(0, 0, width, height);
+
+        final float aspectRatio = width > height ?
+                (float) width / (float) height :
+                (float) height / (float) width;
+        if (width > height) {
+            //横屏
+            Matrix.orthoM(mMatrix, 0, -aspectRatio, aspectRatio, -1f, 1f, -1f, 1f);
+        } else {
+            //竖屏
+            Matrix.orthoM(mMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, -1f, 1f);
+        }
+
     }
 
     @Override
@@ -119,6 +138,8 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
 
         //使用程序片段
         GLES30.glUseProgram(mProgram);
+
+        GLES30.glUniformMatrix4fv(uMatrixLocation, 1, false, mMatrix, 0);
 
         GLES30.glEnableVertexAttribArray(0);
         GLES30.glVertexAttribPointer(0, 3, GLES30.GL_FLOAT, false, 0, vertexBuffer);
