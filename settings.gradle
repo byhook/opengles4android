@@ -1,3 +1,3 @@
-include ':common'
+include ':common', ':opengles-texture'
 include ':opengles-color'
 include ':opengles-simple'
