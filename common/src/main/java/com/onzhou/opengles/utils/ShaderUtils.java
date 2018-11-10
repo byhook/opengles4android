@@ -1,6 +1,10 @@
 package com.onzhou.opengles.utils;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.opengl.GLES30;
+
+import com.onzhou.opengles.core.AppCore;
 
 /**
  * @anchor: andy
@@ -34,8 +38,8 @@ public class ShaderUtils {
     /**
      * 编译
      *
-     * @param type  顶点着色器:GLES30.GL_VERTEX_SHADER
-     *               片段着色器:GLES30.GL_FRAGMENT_SHADER
+     * @param type       顶点着色器:GLES30.GL_VERTEX_SHADER
+     *                   片段着色器:GLES30.GL_FRAGMENT_SHADER
      * @param shaderCode
      * @return
      */
@@ -65,7 +69,7 @@ public class ShaderUtils {
     /**
      * 链接小程序
      *
-     * @param vertexShaderId 顶点着色器
+     * @param vertexShaderId   顶点着色器
      * @param fragmentShaderId 片段着色器
      * @return
      */
