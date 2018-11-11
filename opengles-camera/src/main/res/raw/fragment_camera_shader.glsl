@@ -1,6 +1,4 @@
 #version 300 es
-//OpenGL ES2.0外部纹理扩展
-//#extension GL_OES_EGL_image_external : require
 //OpenGL ES3.0外部纹理扩展
 #extension GL_OES_EGL_image_external_essl3 : require
 precision mediump float;

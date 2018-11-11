@@ -65,10 +65,10 @@ public class CameraSurfaceRenderer implements GLSurfaceView.Renderer {
      */
     private static final float[] TEX_VERTEX = {
             0.5f, 0.5f, //纹理坐标V0
-            0f, 1f,     //纹理坐标V1
-            1f, 1f,     //纹理坐标V2
-            1f, 0.0f,   //纹理坐标V3
-            0f, 0.0f    //纹理坐标V4
+            1f, 1f,     //纹理坐标V1
+            0f, 1f,     //纹理坐标V2
+            0f, 0.0f,   //纹理坐标V3
+            1f, 0.0f    //纹理坐标V4
     };
 
     /**
@@ -111,7 +111,7 @@ public class CameraSurfaceRenderer implements GLSurfaceView.Renderer {
     private int uTextureSamplerLocation;
 
     public CameraSurfaceRenderer(GLSurfaceView glSurfaceView) {
-        this.mCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+        this.mCameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
         this.mGLSurfaceView = glSurfaceView;
         mCamera = Camera.open(mCameraId);
         setCameraDisplayOrientation(mCameraId, mCamera);
