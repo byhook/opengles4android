@@ -12,7 +12,6 @@ import android.support.v4.app.ActivityCompat;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.camera.CameraSurfaceRenderer;
-import com.onzhou.opengles.camera.CameraSurfaceView;
 
 /**
  * @anchor: andy

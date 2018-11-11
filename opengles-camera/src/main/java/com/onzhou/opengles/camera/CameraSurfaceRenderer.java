@@ -111,7 +111,7 @@ public class CameraSurfaceRenderer implements GLSurfaceView.Renderer {
     private int uTextureSamplerLocation;
 
     public CameraSurfaceRenderer(GLSurfaceView glSurfaceView) {
-        this.mCameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+        this.mCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
         this.mGLSurfaceView = glSurfaceView;
         mCamera = Camera.open(mCameraId);
         setCameraDisplayOrientation(mCameraId, mCamera);
