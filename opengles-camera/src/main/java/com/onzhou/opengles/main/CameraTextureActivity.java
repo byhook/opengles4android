@@ -21,7 +21,7 @@ public class CameraTextureActivity extends Activity {
 
     private TextureView mTextureView;
 
-    private CameraV1Pick mCameraTexture;
+    private CameraV1Pick mCameraPick;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,16 +51,16 @@ public class CameraTextureActivity extends Activity {
         mTextureView = new TextureView(this);
         setContentView(mTextureView);
 
-        mCameraTexture = new CameraV1Pick();
-        mCameraTexture.bindTextureView(mTextureView);
+        mCameraPick = new CameraV1Pick();
+        mCameraPick.bindTextureView(mTextureView);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mCameraTexture != null) {
-            mCameraTexture.onDestroy();
-            mCameraTexture = null;
+        if (mCameraPick != null) {
+            mCameraPick.onDestroy();
+            mCameraPick = null;
         }
     }
 }

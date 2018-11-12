@@ -42,16 +42,35 @@ public class TextureEGLHelper extends HandlerThread implements SurfaceTexture.On
 
     private TextureView mTextureView;
 
+    /**
+     * 纹理ID
+     */
     private int mOESTextureId;
 
+    /**
+     * 显示设备
+     */
     private EGLDisplay mEGLDisplay = EGL14.EGL_NO_DISPLAY;
 
+    /**
+     * EGL上下文
+     */
     private EGLContext mEGLContext = EGL14.EGL_NO_CONTEXT;
 
+    /**
+     * 描述帧缓冲区配置参数
+     */
     private EGLConfig[] configs = new EGLConfig[1];
 
+    /**
+     * EGL绘图表面
+     */
     private EGLSurface mEglSurface;
 
+    /**
+     * 自定义的SurfaceTexture
+     * 用来接受Camera数据作二次处理
+     */
     private SurfaceTexture mOESSurfaceTexture;
 
     private CameraTextureRenderer mTextureRenderer;
