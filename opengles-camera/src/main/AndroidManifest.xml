@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.onzhou.opengles.main.CameraSurfaceActivity">
+        <activity android:name="com.onzhou.opengles.main.CameraTextureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

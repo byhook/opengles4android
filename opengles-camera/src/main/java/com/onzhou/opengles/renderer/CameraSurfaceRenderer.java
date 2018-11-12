@@ -1,4 +1,4 @@
-package com.onzhou.opengles.camera;
+package com.onzhou.opengles.renderer;
 
 import android.app.Activity;
 import android.graphics.ImageFormat;
@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 
+import com.onzhou.opengles.camera.R;
 import com.onzhou.opengles.core.AppCore;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
@@ -37,7 +38,7 @@ import static android.opengl.GLES11Ext.GL_TEXTURE_EXTERNAL_OES;
  */
 public class CameraSurfaceRenderer implements GLSurfaceView.Renderer {
 
-    private static final String TAG = "TextureRenderer";
+    private static final String TAG = "CameraTextureRenderer";
 
     private final FloatBuffer vertexBuffer, mTexVertexBuffer;
 

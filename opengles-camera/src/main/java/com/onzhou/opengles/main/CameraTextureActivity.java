@@ -1,26 +1,27 @@
 package com.onzhou.opengles.main;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.view.TextureView;
 
-import com.onzhou.opengles.base.AbsBaseActivity;
-import com.onzhou.opengles.renderer.CameraSurfaceRenderer;
+import com.onzhou.opengles.camera.CameraV1Pick;
 
 /**
  * @anchor: andy
  * @date: 18-11-10
  */
+public class CameraTextureActivity extends Activity {
 
-public class CameraSurfaceActivity extends AbsBaseActivity {
+    private static final int PERMISSION_CODE = 1000;
 
-    private static final int PERMISSION_CODE = 100;
+    private TextureView mTextureView;
 
-    private GLSurfaceView mGLSurfaceView;
+    private CameraV1Pick mCameraTexture;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,11 +48,19 @@ public class CameraSurfaceActivity extends AbsBaseActivity {
     }
 
     private void setupView() {
-        //实例化一个GLSurfaceView
-        mGLSurfaceView = new GLSurfaceView(this);
-        mGLSurfaceView.setEGLContextClientVersion(3);
-        mGLSurfaceView.setRenderer(new CameraSurfaceRenderer(mGLSurfaceView));
-        setContentView(mGLSurfaceView);
+        mTextureView = new TextureView(this);
+        setContentView(mTextureView);
+
+        mCameraTexture = new CameraV1Pick();
+        mCameraTexture.bindTextureView(mTextureView);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mCameraTexture != null) {
+            mCameraTexture.onDestroy();
+            mCameraTexture = null;
+        }
+    }
 }
