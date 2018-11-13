@@ -170,14 +170,7 @@ public void onDrawFrame(GL10 gl) {
 
 一个向量是一个有多个元索的一维数组。在`OpenGL`里，一个`位置`通常是一个四元素向量，`颜色`也是一样。我们使用的大多数向量一般都有四个元素。一个`位置向量`，它有`一个x、一个y、一个z和一个w`分量。
 
-$$
-\begin{bmatrix}
-x \\
-y \\
-z \\
-w
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131505362001.png)
 
 我们在`三维空间`中，`x，y，z分量用的比较多`
 
@@ -185,132 +178,40 @@ $$
 
 —个矩阵(`Matrix`)是一个有多个元素的二维数组。在`OpenGL`里，我们一般使用矩阵作向量投影，如`正交或者透视投影`，并且也用它们使物体旋转(`rotation`)、平移(`translatum`)以及缩放(`scaling`)。我们把矩阵与每个要变换的向最相乘即可实现这些变换。
 
-$$
-\begin{bmatrix}
-{x_{x}}&{x_{y}}&{x_{z}}&{x_{w}}\\
-{y_{x}}&{y_{y}}&{y_{z}}&{y_{w}}\\
-{z_{x}}&{z_{y}}&{z_{z}}&{z_{w}}\\
-{w_{x}}&{w_{y}}&{w_{z}}&{w_{w}}\\
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362001.png)
 
 `矩阵与向量相乘`
 
-$$
-\begin{bmatrix}
-{x_{x}}&{x_{y}}&{x_{z}}&{x_{w}}\\
-{y_{x}}&{y_{y}}&{y_{z}}&{y_{w}}\\
-{z_{x}}&{z_{y}}&{z_{z}}&{z_{w}}\\
-{w_{x}}&{w_{y}}&{w_{z}}&{w_{w}}\\
-\end{bmatrix}
-\begin{bmatrix}
-x \\
-y \\
-z \\
-w
-\end{bmatrix}=
-\begin{bmatrix}
-{x_{x}x}&{x_{y}y}&{x_{z}z}&{x_{w}w}\\
-{y_{x}x}&{y_{y}y}&{y_{z}z}&{y_{w}w}\\
-{z_{x}x}&{z_{y}y}&{z_{z}z}&{z_{w}w}\\
-{w_{x}x}&{w_{y}y}&{w_{z}z}&{w_{w}w}\\
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362002.png)
 
 对于第一行，我们让${x_{x}}$和${x}$相乘、${x_{y}}$和${y}$相乘、${x_{z}}$和${z}$相乘以及${x_{w}}$和${w}$相乘，然后把 所有四个结果加起来得到这个结果的${x}$分量。
 矩阵第一行的所有四个分都影响了那个结果`x`，第二行的所有4个分量都影响了那个结果`y`，以此类推。在矩阵的每一行内，第一个分量与向量的`x`相乘，第二个分量也与向虽的`y`相乘，以此类推。
 
 - 单位矩阵
 
-$$
-\begin{bmatrix}
-1 & 0 & 0 & 0\\
-0 & 1 & 0 & 0\\
-0 & 0 & 1 & 0\\
-0 & 0 & 0 & 1
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362003.png)
 
 `这个矩阵乘以任何向量都是得到与之前结果相同的向量`
 
-$$
-\begin{bmatrix}
-1 & 0 & 0 & 0\\
-0 & 1 & 0 & 0\\
-0 & 0 & 1 & 0\\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-1 \\
-2 \\
-3 \\
-4
-\end{bmatrix}=
-\begin{bmatrix}
-1 \times1 + 0\times2 + 0 \times3 +0\times4\\
-0 \times1 + 1\times2 + 0 \times3 +0\times4\\
-0 \times1 + 0\times2 + 1 \times3 +0\times4\\
-0 \times1 + 0\times2 + 0 \times3 +1\times4\\
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362004.png)
 
 结果
 
-$$
-\begin{bmatrix}
-1 \\
-2 \\
-3 \\
-4
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362005.png)
 
 - 平移矩阵
 
 `平移矩阵可以把一个物体沿着指定的方向移动`
 
-$$
-\begin{bmatrix}
-0  & 0 & 0 & x_{translation} \\
-0  & 1 & 0 & y_{translation} \\
-0  & 0 & 1 & z_{translation} \\
-0  & 0 & 0 & 1 \\
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362006.png)
 
 `计算过程：`
 
-$$
-\begin{bmatrix}
-1 & 0 & 0 & 3\\
-0 & 1 & 0 & 3\\
-0 & 0 & 1 & 0\\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-2 \\
-2 \\
-0 \\
-1
-\end{bmatrix}=
-\begin{bmatrix}
-1 \times2 + 0\times2 + 0 \times0 +3\times1\\
-0 \times2 + 1\times2 + 0 \times0 +3\times1\\
-0 \times0 + 0\times0 + 1 \times0 +0\times1\\
-0 \times2 + 0\times2 + 0 \times0 +1\times1\\
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362007.png)
 
 `最终的结果：`
 
-$$
-\begin{bmatrix}
-5 \\
-5 \\
-0 \\
-1
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362008.png)
 
 #### 正交投影
 
@@ -331,60 +232,17 @@ $$
 
 这个方法会产生下面的正交投影矩阵：
 
-$$
-\begin{bmatrix}
-\cfrac{\mathbf2}{\mathbf {right-left}} & \mathbf0 & \mathbf0 & -\cfrac{\mathbf{right+left}}{\mathbf {right-left}}\\
-\\
-\mathbf0 & \cfrac{\mathbf2}{\mathbf {top-bottom}} & \mathbf0 & -\cfrac{\mathbf{top+bottom}}{\mathbf {top-bottom}}\\
-\\
-\mathbf0 & \mathbf0 & \cfrac{-\mathbf2}{\mathbf {far-near}} & -\cfrac{\mathbf{far+near}}{\mathbf {far-near}}\\
-\\
-\mathbf0 & \mathbf0 &  \mathbf0 & \mathbf{1}
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362009.png)
 
 `经过上述正交投影矩阵转换之后，转换回归一矩阵`
 
-$$
-\begin{bmatrix}
-\cfrac{\mathbf2}{\mathbf {1.78-(-1.78)}} & \mathbf0 & \mathbf0 & -\cfrac{\mathbf{1.78+(-1.78)}}{\mathbf {1.78-(-1.78)}}\\
-\\
-\mathbf0 & \cfrac{\mathbf2}{\mathbf {1-(-1)}} & \mathbf0 & -\cfrac{\mathbf{1+(-1)}}{\mathbf {1-(-1)}}\\
-\\
-\mathbf0 & \mathbf0 & \cfrac{-\mathbf2}{\mathbf {1-(-1)}} & -\cfrac{\mathbf{1+(-1)}}{\mathbf {1-(-1)}}\\
-\\
-\mathbf0 & \mathbf0 &  \mathbf0 & \mathbf{1}
-\end{bmatrix}
-\begin{bmatrix}
-1.78 \\
-1 \\
-0 \\
-1
-\end{bmatrix}=
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362010.png)
 
-$$
-\begin{bmatrix}
-\cfrac{\mathbf2}{\mathbf {1.78-(-1.78)}}\times\mathbf1.78 + \mathbf0\times\mathbf1 + \mathbf0 \times\mathbf0 + -\cfrac{\mathbf{1.78+(-1.78)}}{\mathbf {1.78-(-1.78)}}\times\mathbf0\\
-\\
-\mathbf0\times\mathbf1 + \cfrac{\mathbf2}{\mathbf {1-(-1)}}\times\mathbf1 +\mathbf0\times\mathbf0 + -\cfrac{\mathbf{1+(-1)}}{\mathbf {1-(-1)}}\times\mathbf1\\
-\\
-\mathbf0 \times\mathbf1.78+ \mathbf0\times\mathbf1 + \cfrac{-\mathbf2}{\mathbf {1-(-1)}}\times\mathbf0 + -\cfrac{\mathbf{1+(-1)}}{\mathbf {1-(-1)}}\times\mathbf1\\
-\\
-\mathbf0\times\mathbf1.78 + \mathbf0\times\mathbf1 +  \mathbf0\times\mathbf0 + \mathbf{1}\times\mathbf1
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362011.png)
 
 `输出结果`
 
-$$
-\begin{bmatrix}
-1 \\
-1 \\
-0 \\
-1
-\end{bmatrix}
-$$
+![](https://github.com/byhook/opengles4android/blob/master/readme/images/201811131506362012.png)
 
 在`RectangleRenderer类`中定义目标数组
 ```java
