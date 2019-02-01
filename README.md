@@ -16,3 +16,18 @@
 - [android平台下OpenGLES3.0使用GLSurfaceView对相机Camera预览实时处理](https://github.com/byhook/opengles4android/blob/master/readme/android平台下OpenGLES3.0使用GLSurfaceView对相机Camera预览实时处理.md)
 - [android平台下OpenGLES3.0使用TextureView对相机Camera预览实时处理](https://github.com/byhook/opengles4android/blob/master/readme/android平台下OpenGLES3.0使用TextureView对相机Camera预览实时处理.md)
 - [android平台下基于ANativeWindow实现渲染bitmap对象](https://github.com/byhook/opengles4android/blob/master/readme/android平台下基于ANativeWindow实现渲染bitmap对像.md)
+
+
+## 效果预览
+
+<div>
+    <img src='./screenshots/20181105121623778.png' width=320>
+    <img src='./screenshots/20181109133909448.png' width=320>
+</div>
+
+
+<div>
+    <img src='./screenshots/20181110174836154.png' width=320>
+    <img src='./screenshots/20181112222945107.png' width=320>
+</div>
+
