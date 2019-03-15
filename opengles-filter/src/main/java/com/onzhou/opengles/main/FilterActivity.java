@@ -1,19 +1,23 @@
 package com.onzhou.opengles.main;
 
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
+import com.onzhou.opengles.base.AbsGLSurfaceActivity;
+import com.onzhou.opengles.filter.FilterRenderer;
 
 /**
  * @anchor: andy
  * @date: 2019-03-15
  * @description:
  */
-public class FilterActivity extends AbsBaseActivity {
+public class FilterActivity extends AbsGLSurfaceActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected GLSurfaceView.Renderer bindRenderer() {
+        return new FilterRenderer();
     }
+
 }
