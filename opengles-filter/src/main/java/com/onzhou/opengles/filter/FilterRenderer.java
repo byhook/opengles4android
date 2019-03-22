@@ -69,7 +69,7 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
             0, 4, 1   //V0,V4,V1 三个顶点组成一个三角形
     };
 
-    private int uMatrixLocation;
+    private int uMatrixLocation, aFilterLocation;
 
     private float[] mMatrix = new float[16];
 
@@ -107,7 +107,7 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
         mProgram = ShaderUtils.linkProgram(vertexShaderId, fragmentShaderId);
 
         uMatrixLocation = GLES30.glGetUniformLocation(mProgram, "u_Matrix");
-
+        aFilterLocation = GLES30.glGetUniformLocation(mProgram, "a_Filter");
         //加载纹理
         textureId = TextureUtils.loadTexture(AppCore.getInstance().getContext(), R.drawable.main);
     }
@@ -136,6 +136,8 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
         //使用程序片段
         GLES30.glUseProgram(mProgram);
 
+        GLES30.glUniform3f(aFilterLocation, 0.299f, 0.587f, 0.114f);
+
         GLES30.glUniformMatrix4fv(uMatrixLocation, 1, false, mMatrix, 0);
 
         GLES30.glEnableVertexAttribArray(0);
@@ -151,5 +153,9 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
         // 绘制
         GLES20.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length, GLES20.GL_UNSIGNED_SHORT, mVertexIndexBuffer);
 
+    }
+
+    public void updateParam(float x, float y, float z) {
+        GLES30.glUniform3f(aFilterLocation, x, y, z);
     }
 }
