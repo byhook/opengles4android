@@ -1,0 +1,75 @@
+if (library.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+
+android {
+
+    //构建版本
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    //默认的配置
+    defaultConfig {
+
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            //清单配置
+            if (library.toBoolean()) {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+            //库地址
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile rootProject.ext.dependencies["junit"]
+    compile rootProject.ext.dependencies["appcompat-v7"]
+    compile rootProject.ext.dependencies["design"]
+
+    compile project(':common-base')
+
+    compile 'com.alibaba:arouter-api:1.4.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+}

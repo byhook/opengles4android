@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply from: "$rootDir/module.gradle"
 
 android {
     //构建版本
