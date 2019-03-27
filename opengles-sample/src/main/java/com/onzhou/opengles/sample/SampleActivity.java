@@ -55,4 +55,13 @@ public class SampleActivity extends AbsBaseActivity {
     public void onCameraClick(View view) {
         PageRouter.getInstance().routePage(RouteTable.PAGE_CAMERA);
     }
+
+    /**
+     * 滤镜实现
+     *
+     * @param view
+     */
+    public void onFilterClick(View view) {
+        PageRouter.getInstance().routePage(RouteTable.PAGE_FILTER);
+    }
 }

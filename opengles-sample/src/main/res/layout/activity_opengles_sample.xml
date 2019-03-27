@@ -45,6 +45,13 @@
             android:onClick="onCameraClick"
             android:text="黑白相机" />
 
+        <Button
+            style="@style/SampleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onFilterClick"
+            android:text="滤镜实现" />
+
     </LinearLayout>
 
 

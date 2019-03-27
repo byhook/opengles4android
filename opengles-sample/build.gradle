@@ -42,4 +42,5 @@ dependencies {
     compile project(':sample-native')
     compile project(':sample-texture')
     compile project(':sample-camera')
+    compile project(':sample-filter')
 }

@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.filter.FilterRenderer;
 import com.onzhou.opengles.filter.R;
@@ -15,6 +17,7 @@ import com.onzhou.opengles.filter.R;
  * @date: 2019-03-15
  * @description:
  */
+@Route(path = RouteTable.PAGE_FILTER)
 public class FilterActivity extends AbsBaseActivity implements SeekBar.OnSeekBarChangeListener {
 
     private ViewGroup mRootLayer;

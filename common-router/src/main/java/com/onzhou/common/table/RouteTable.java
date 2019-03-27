@@ -32,4 +32,9 @@ public interface RouteTable {
      */
     String PAGE_CAMERA = "/camera/page_camera";
 
+    /**
+     * 滤镜实现
+     */
+    String PAGE_FILTER = "/filter/page_filter";
+
 }
