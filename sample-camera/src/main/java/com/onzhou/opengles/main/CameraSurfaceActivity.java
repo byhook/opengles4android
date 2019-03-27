@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.renderer.CameraSurfaceRenderer;
 
@@ -15,7 +17,7 @@ import com.onzhou.opengles.renderer.CameraSurfaceRenderer;
  * @anchor: andy
  * @date: 18-11-10
  */
-
+@Route(path = RouteTable.PAGE_CAMERA)
 public class CameraSurfaceActivity extends AbsBaseActivity {
 
     private static final int PERMISSION_CODE = 100;

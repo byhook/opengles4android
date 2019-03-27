@@ -27,4 +27,9 @@ public interface RouteTable {
      */
     String PAGE_TEXTURE = "/texture/page_texture";
 
+    /**
+     * 黑白相机实现
+     */
+    String PAGE_CAMERA = "/camera/page_camera";
+
 }

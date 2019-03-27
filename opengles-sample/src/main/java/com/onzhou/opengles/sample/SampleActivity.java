@@ -47,4 +47,12 @@ public class SampleActivity extends AbsBaseActivity {
         PageRouter.getInstance().routePage(RouteTable.PAGE_TEXTURE);
     }
 
+    /**
+     * 黑白相机实现
+     *
+     * @param view
+     */
+    public void onCameraClick(View view) {
+        PageRouter.getInstance().routePage(RouteTable.PAGE_CAMERA);
+    }
 }

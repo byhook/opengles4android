@@ -38,6 +38,13 @@
             android:onClick="onTextureClick"
             android:text="图片纹理" />
 
+        <Button
+            style="@style/SampleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onCameraClick"
+            android:text="黑白相机" />
+
     </LinearLayout>
 
 

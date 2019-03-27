@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.view.TextureView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.camera.CameraV1Pick;
 
 /**
