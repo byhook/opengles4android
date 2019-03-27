@@ -24,6 +24,13 @@
             android:onClick="onColorClick"
             android:text="颜色显示" />
 
+        <Button
+            style="@style/SampleTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onNativeClick"
+            android:text="本地实现" />
+
     </LinearLayout>
 
 

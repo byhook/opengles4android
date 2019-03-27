@@ -28,4 +28,13 @@ public class SampleActivity extends AbsBaseActivity {
     public void onColorClick(View view) {
         PageRouter.getInstance().routePage(RouteTable.PAGE_COLOR);
     }
+
+    /**
+     * 基于JNI实现的OpenGLES相关操作
+     *
+     * @param view
+     */
+    public void onNativeClick(View view) {
+        PageRouter.getInstance().routePage(RouteTable.PAGE_NATIVE);
+    }
 }

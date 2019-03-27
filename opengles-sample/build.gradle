@@ -10,7 +10,6 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
-
     }
     buildTypes {
         release {
@@ -40,4 +39,5 @@ dependencies {
     //示例组件
     compile project(':sample-basis')
     compile project(':sample-color')
+    compile project(':sample-native')
 }

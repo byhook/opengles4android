@@ -17,4 +17,9 @@ public interface RouteTable {
      */
     String PAGE_COLOR = "/color/page_color";
 
+    /**
+     * native层实现
+     */
+    String PAGE_NATIVE = "/native/page_native";
+
 }
