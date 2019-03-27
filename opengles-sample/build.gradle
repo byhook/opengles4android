@@ -28,10 +28,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["design"]
-
+    //路由组件
+    compile rootProject.ext.dependencies["arouter-api"]
     compile project(':common-base')
+    compile project(':common-router')
+
+    //示例组件
+    compile project(':sample-basis')
 }

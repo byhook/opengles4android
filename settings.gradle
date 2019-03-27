@@ -1,3 +1,3 @@
-include ':common-base', ':opengles-texture', ':opengles-camera', ':opengles-native', ':opengles-filter', ':opengles-sample'
+include ':common-base', ':opengles-texture', ':opengles-camera', ':opengles-native', ':opengles-filter', ':opengles-sample', ':common-router'
 include ':opengles-color'
 include ':sample-basis'

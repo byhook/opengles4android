@@ -4,7 +4,6 @@ if (library.toBoolean()) {
     apply plugin: 'com.android.application'
 }
 
-
 android {
 
     //构建版本
@@ -69,7 +68,8 @@ dependencies {
     compile rootProject.ext.dependencies["design"]
 
     compile project(':common-base')
+    compile project(':common-router')
 
-    compile 'com.alibaba:arouter-api:1.4.0'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    compile rootProject.ext.dependencies["arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }
