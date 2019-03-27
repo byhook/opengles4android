@@ -8,26 +8,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
 
-    <SeekBar
-        android:id="@+id/filter_seek_bar_r"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:max="100" />
-
-    <SeekBar
-        android:id="@+id/filter_seek_bar_g"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="100" />
-
-    <SeekBar
-        android:id="@+id/filter_seek_bar_b"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:max="100" />
+    </FrameLayout>
 
 </LinearLayout>

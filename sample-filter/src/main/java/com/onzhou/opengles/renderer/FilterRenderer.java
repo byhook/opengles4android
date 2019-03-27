@@ -1,4 +1,4 @@
-package com.onzhou.opengles.filter;
+package com.onzhou.opengles.renderer;
 
 import android.opengl.GLES20;
 import android.opengl.GLES30;
@@ -6,6 +6,10 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 
 import com.onzhou.opengles.core.AppCore;
+import com.onzhou.opengles.filter.BaseFilter;
+import com.onzhou.opengles.filter.IFilter;
+import com.onzhou.opengles.filter.OriginFilter;
+import com.onzhou.opengles.filter.R;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 import com.onzhou.opengles.utils.TextureUtils;
@@ -23,7 +27,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-09
  * @description: 基于纹理贴图显示bitmap
  */
-public class FilterRenderer implements GLSurfaceView.Renderer {
+public class FilterRenderer implements GLSurfaceView.Renderer, IFilter {
 
     private static final String TAG = "TextureRenderer";
 
@@ -69,9 +73,11 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
             0, 4, 1   //V0,V4,V1 三个顶点组成一个三角形
     };
 
-    private int uMatrixLocation, aFilterLocation;
+    private int uMatrixLocation, aFilterLocation, iFilterType;
 
     private float[] mMatrix = new float[16];
+
+    private BaseFilter baseFilter = new OriginFilter();
 
     public FilterRenderer() {
         //分配内存空间,每个浮点型占4字节空间
@@ -95,19 +101,19 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
         mVertexIndexBuffer.position(0);
     }
 
-
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
-        final int vertexShaderId = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.vertex_texture_shader));
-        final int fragmentShaderId = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_texture_shader));
+        final int vertexShaderId = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.vertex_filter_shader));
+        final int fragmentShaderId = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_filter_shader));
         //链接程序片段
         mProgram = ShaderUtils.linkProgram(vertexShaderId, fragmentShaderId);
 
         uMatrixLocation = GLES30.glGetUniformLocation(mProgram, "u_Matrix");
         aFilterLocation = GLES30.glGetUniformLocation(mProgram, "a_Filter");
+        iFilterType = GLES30.glGetUniformLocation(mProgram, "vFilterType");
         //加载纹理
         textureId = TextureUtils.loadTexture(AppCore.getInstance().getContext(), R.drawable.main);
     }
@@ -126,7 +132,6 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
             //竖屏
             Matrix.orthoM(mMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, -1f, 1f);
         }
-
     }
 
     @Override
@@ -136,7 +141,11 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
         //使用程序片段
         GLES30.glUseProgram(mProgram);
 
-        GLES30.glUniform3f(aFilterLocation, 0.299f, 0.587f, 0.114f);
+        if (baseFilter != null) {
+            //更新参数
+            GLES30.glUniform1i(iFilterType, baseFilter.getType());
+            GLES30.glUniform3fv(aFilterLocation, 1, baseFilter.getFilter(), 0);
+        }
 
         GLES30.glUniformMatrix4fv(uMatrixLocation, 1, false, mMatrix, 0);
 
@@ -152,10 +161,11 @@ public class FilterRenderer implements GLSurfaceView.Renderer {
 
         // 绘制
         GLES20.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length, GLES20.GL_UNSIGNED_SHORT, mVertexIndexBuffer);
-
     }
 
-    public void updateParam(float x, float y, float z) {
-        GLES30.glUniform3f(aFilterLocation, x, y, z);
+    @Override
+    public void setFilter(BaseFilter baseFilter) {
+        this.baseFilter = baseFilter;
     }
+
 }
