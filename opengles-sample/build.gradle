@@ -40,4 +40,5 @@ dependencies {
     compile project(':sample-basis')
     compile project(':sample-color')
     compile project(':sample-native')
+    compile project(':sample-texture')
 }

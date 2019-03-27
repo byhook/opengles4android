@@ -22,4 +22,9 @@ public interface RouteTable {
      */
     String PAGE_NATIVE = "/native/page_native";
 
+    /**
+     * 纹理实现
+     */
+    String PAGE_TEXTURE = "/texture/page_texture";
+
 }

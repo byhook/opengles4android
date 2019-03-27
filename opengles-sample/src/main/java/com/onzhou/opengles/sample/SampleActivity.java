@@ -37,4 +37,14 @@ public class SampleActivity extends AbsBaseActivity {
     public void onNativeClick(View view) {
         PageRouter.getInstance().routePage(RouteTable.PAGE_NATIVE);
     }
+
+    /**
+     * 图片纹理处理
+     *
+     * @param view
+     */
+    public void onTextureClick(View view) {
+        PageRouter.getInstance().routePage(RouteTable.PAGE_TEXTURE);
+    }
+
 }
