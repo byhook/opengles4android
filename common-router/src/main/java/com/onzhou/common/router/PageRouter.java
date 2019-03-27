@@ -28,4 +28,11 @@ public abstract class PageRouter {
      */
     public abstract void routeBasisPage();
 
+    /**
+     * 路由指定页面
+     *
+     * @param routePage
+     */
+    public abstract void routePage(String routePage);
+
 }

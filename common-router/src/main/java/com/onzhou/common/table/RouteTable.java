@@ -12,4 +12,9 @@ public interface RouteTable {
      */
     String PAGE_BASIS = "/basis/page_basis";
 
+    /**
+     * 基本颜色显示
+     */
+    String PAGE_COLOR = "/color/page_color";
+
 }

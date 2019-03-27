@@ -27,4 +27,9 @@ public class PageRouterImpl extends PageRouter {
         ARouter.getInstance().build(RouteTable.PAGE_BASIS).navigation();
     }
 
+    @Override
+    public void routePage(String routePage) {
+        ARouter.getInstance().build(routePage).navigation();
+    }
+
 }

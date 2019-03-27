@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.onzhou.common.router.PageRouter;
+import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 
 /**
@@ -20,8 +21,11 @@ public class SampleActivity extends AbsBaseActivity {
         setContentView(R.layout.activity_opengles_sample);
     }
 
-
     public void onBasisClick(View view) {
         PageRouter.getInstance().routeBasisPage();
+    }
+
+    public void onColorClick(View view) {
+        PageRouter.getInstance().routePage(RouteTable.PAGE_COLOR);
     }
 }

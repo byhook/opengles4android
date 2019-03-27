@@ -39,4 +39,5 @@ dependencies {
 
     //示例组件
     compile project(':sample-basis')
+    compile project(':sample-color')
 }

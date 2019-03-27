@@ -1,0 +1,20 @@
+apply from: "$rootDir/module.gradle"
+
+android {
+    defaultConfig {
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+                arguments '-DANDROID_STL=c++_static'
+            }
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
