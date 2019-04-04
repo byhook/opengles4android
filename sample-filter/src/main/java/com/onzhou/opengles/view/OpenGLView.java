@@ -5,7 +5,6 @@ import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
 import com.onzhou.opengles.filter.BaseFilter;
-import com.onzhou.opengles.filter.IFilter;
 import com.onzhou.opengles.renderer.FilterRenderer;
 
 /**
@@ -13,15 +12,15 @@ import com.onzhou.opengles.renderer.FilterRenderer;
  * @date: 2019-03-27
  * @description:
  */
-public class GLView extends GLSurfaceView implements IFilter {
+public class OpenGLView extends GLSurfaceView {
 
     private FilterRenderer mGLRender;
 
-    public GLView(Context context) {
+    public OpenGLView(Context context) {
         this(context, null);
     }
 
-    public GLView(Context context, AttributeSet attrs) {
+    public OpenGLView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupSurfaceView();
     }
@@ -39,10 +38,27 @@ public class GLView extends GLSurfaceView implements IFilter {
         }
     }
 
-    @Override
-    public void setFilter(BaseFilter baseFilter) {
-        if (mGLRender != null) {
-            mGLRender.setFilter(baseFilter);
+    /**
+     * 设置滤镜
+     * 滤镜由于可能存在多种类型
+     * 这里抽象了一个基础的滤镜类
+     * queueEvent
+     *
+     * @param baseFilter
+     */
+    public void setFilter(final BaseFilter baseFilter) {
+        queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                if (mGLRender != null) {
+                    mGLRender.setFilter(baseFilter);
+                }
+            }
+        });
+        try {
+            requestRender();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

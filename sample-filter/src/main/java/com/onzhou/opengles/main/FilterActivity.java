@@ -1,8 +1,6 @@
 package com.onzhou.opengles.main;
 
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -12,8 +10,7 @@ import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.filter.GrayFilter;
 import com.onzhou.opengles.filter.OriginFilter;
-import com.onzhou.opengles.renderer.FilterRenderer;
-import com.onzhou.opengles.view.GLView;
+import com.onzhou.opengles.view.OpenGLView;
 import com.onzhou.opengles.filter.R;
 
 /**
@@ -26,10 +23,10 @@ public class FilterActivity extends AbsBaseActivity {
 
     private ViewGroup mRootLayer;
 
-    private GLView mGlView;
+    private OpenGLView mGlView;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
         setupViews();
@@ -38,7 +35,7 @@ public class FilterActivity extends AbsBaseActivity {
     private void setupViews() {
         mRootLayer = (ViewGroup) findViewById(R.id.linear_root_layer);
 
-        mGlView = new GLView(this);
+        mGlView = new OpenGLView(this);
         mRootLayer.addView(mGlView, 0);
     }
 

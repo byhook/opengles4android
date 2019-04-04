@@ -9,7 +9,6 @@ out vec3 vFilter;
 out vec2 vTexCoord;
 void main() {
      gl_Position  = u_Matrix * vPosition;
-     gl_PointSize = 10.0;
      vTexCoord = aTextureCoord;
 
      vFilter = a_Filter;

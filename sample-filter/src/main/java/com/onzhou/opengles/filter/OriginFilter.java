@@ -7,14 +7,5 @@ package com.onzhou.opengles.filter;
  */
 public class OriginFilter extends BaseFilter {
 
-    @Override
-    public int getType() {
-        return FilterType.TYPE_ORIGIN;
-    }
-
-    @Override
-    public float[] getFilter() {
-        return new float[]{1.0f, 1.0f, 1.0f};
-    }
 
 }
