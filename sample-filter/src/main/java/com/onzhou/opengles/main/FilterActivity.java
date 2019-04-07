@@ -10,6 +10,7 @@ import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.filter.GrayFilter;
 import com.onzhou.opengles.filter.OriginFilter;
+import com.onzhou.opengles.filter.QuarterMirrorFilter;
 import com.onzhou.opengles.view.OpenGLView;
 import com.onzhou.opengles.filter.R;
 
@@ -52,6 +53,8 @@ public class FilterActivity extends AbsBaseActivity {
             mGlView.setFilter(new OriginFilter());
         } else if (itemId == R.id.filter_gray) {
             mGlView.setFilter(new GrayFilter());
+        } else if (itemId == R.id.filter_quarter_mirror) {
+            mGlView.setFilter(new QuarterMirrorFilter());
         }
         return super.onOptionsItemSelected(item);
     }

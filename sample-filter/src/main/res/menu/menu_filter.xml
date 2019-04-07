@@ -7,4 +7,7 @@
     <item
         android:id="@+id/filter_gray"
         android:title="黑白" />
+    <item
+        android:id="@+id/filter_quarter_mirror"
+        android:title="四分镜" />
 </menu>

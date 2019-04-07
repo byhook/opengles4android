@@ -11,7 +11,7 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * @anchor: andy
  * @date: 2018-11-09
- * @description: 基于纹理贴图显示bitmap
+ * @description:
  */
 public class FilterRenderer implements GLSurfaceView.Renderer {
 
