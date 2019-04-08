@@ -86,8 +86,6 @@ public class CameraTextureRenderer implements ITextureRenderer {
         final int vertexShader = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.vertex_texture_shader));
         final int fragmentShader = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_texture_shader));
         mShaderProgram = ShaderUtils.linkProgram(vertexShader, fragmentShader);
-        //开始使用程序
-        GLES30.glUseProgram(mShaderProgram);
 
         aPositionLocation = GLES30.glGetAttribLocation(mShaderProgram, CameraTextureRenderer.POSITION_ATTRIBUTE);
         aTextureCoordLocation = GLES30.glGetAttribLocation(mShaderProgram, CameraTextureRenderer.TEXTURE_COORD_ATTRIBUTE);
@@ -103,6 +101,9 @@ public class CameraTextureRenderer implements ITextureRenderer {
     @Override
     public void onDrawFrame(SurfaceTexture surfaceTexture) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+
+        //开始使用程序
+        GLES30.glUseProgram(mShaderProgram);
 
         surfaceTexture.updateTexImage();
         surfaceTexture.getTransformMatrix(transformMatrix);

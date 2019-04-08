@@ -5,6 +5,5 @@ uniform mat4 uTextureMatrix;
 out vec2 yuvTexCoords;
 void main() { 
      gl_Position  = vPosition;
-     gl_PointSize = 10.0;
      yuvTexCoords = (uTextureMatrix * aTextureCoord).xy;
 }

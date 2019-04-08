@@ -6,7 +6,5 @@ in vec2 vTextureCoord;
 out vec4 vFragColor;
 void main()
 {
-  vec4 vCameraColor = texture(uTextureSampler, vTextureCoord);
-  float fGrayColor = (0.299*vCameraColor.r + 0.587*vCameraColor.g + 0.114*vCameraColor.b);
-  vFragColor = vec4(fGrayColor, fGrayColor, fGrayColor, 1.0);
+  vFragColor = texture(uTextureSampler, vTextureCoord);
 }

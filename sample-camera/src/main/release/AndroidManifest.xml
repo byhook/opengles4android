@@ -16,8 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.onzhou.opengles.main.CameraSurfaceActivity" />
-        <activity android:name="com.onzhou.opengles.main.CameraTextureActivity" />
+        <activity
+            android:name="com.onzhou.opengles.main.CameraSurfaceActivity"
+            android:theme="@style/AppFullScreenTheme" />
+
+        <activity
+            android:name="com.onzhou.opengles.main.CameraTextureActivity"
+            android:theme="@style/AppFullScreenTheme" />
 
     </application>
 
