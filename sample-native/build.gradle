@@ -8,7 +8,7 @@ android {
                 arguments '-DANDROID_STL=c++_static'
             }
             ndk {
-                abiFilters "armeabi-v7a"
+                abiFilters "armeabi-v7a","arm64-v8a"
             }
         }
     }
