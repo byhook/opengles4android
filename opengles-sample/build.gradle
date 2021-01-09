@@ -4,6 +4,14 @@ android {
     //构建版本
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
+    signingConfigs {
+        config {
+            storeFile file("$rootDir/debug.jks")
+            keyAlias "debug"
+            keyPassword "debug360"
+            storePassword "debug360"
+        }
+    }
     //默认的配置
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -12,7 +20,12 @@ android {
         versionName rootProject.ext.android.versionName
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
         release {
+            signingConfig signingConfigs.config
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
