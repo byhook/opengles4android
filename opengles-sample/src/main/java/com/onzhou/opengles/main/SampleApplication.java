@@ -2,7 +2,6 @@ package com.onzhou.opengles.main;
 
 import android.app.Application;
 
-import com.onzhou.common.router.PageRouter;
 import com.onzhou.opengles.core.AppCore;
 
 /**
@@ -16,7 +15,6 @@ public class SampleApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AppCore.getInstance().init(this);
-        PageRouter.getInstance().init(this);
     }
 
 }

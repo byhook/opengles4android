@@ -1,31 +1,33 @@
 package com.onzhou.opengles.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.os.AsyncTaskCompat;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.nativewindow.NativeWindowSample;
 import com.onzhou.opengles.nativewindow.R;
-import com.onzhou.opengles.task.AssertReleaseTask;
 
 /**
  * @anchor: andy
  * @date: 2018-11-13
  * @description:
  */
-@Route(path = RouteTable.PAGE_NATIVE)
 public class NativeWindowActivity extends AbsBaseActivity {
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, NativeWindowActivity.class);
+        context.startActivity(intent);
+    }
 
     /**
      * 根容器

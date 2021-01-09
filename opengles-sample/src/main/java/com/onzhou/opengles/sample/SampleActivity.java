@@ -4,9 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.onzhou.common.router.PageRouter;
-import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
+import com.onzhou.opengles.main.CameraSurfaceActivity;
+import com.onzhou.opengles.main.ColorActivity;
+import com.onzhou.opengles.main.FilterActivity;
+import com.onzhou.opengles.main.NativeWindowActivity;
+import com.onzhou.opengles.main.SimpleActivity;
+import com.onzhou.opengles.main.TextureActivity;
 
 /**
  * @anchor: andy
@@ -22,11 +26,11 @@ public class SampleActivity extends AbsBaseActivity {
     }
 
     public void onBasisClick(View view) {
-        PageRouter.getInstance().routeBasisPage();
+        SimpleActivity.intentStart(this);
     }
 
     public void onColorClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_COLOR);
+        ColorActivity.intentStart(this);
     }
 
     /**
@@ -35,7 +39,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onNativeClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_NATIVE);
+        NativeWindowActivity.intentStart(this);
     }
 
     /**
@@ -44,7 +48,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onTextureClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_TEXTURE);
+        TextureActivity.intentStart(this);
     }
 
     /**
@@ -53,7 +57,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onCameraClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_CAMERA);
+        CameraSurfaceActivity.intentStart(this);
     }
 
     /**
@@ -62,6 +66,6 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onFilterClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_FILTER);
+        FilterActivity.intentStart(this);
     }
 }

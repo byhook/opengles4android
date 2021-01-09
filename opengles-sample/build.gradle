@@ -40,20 +40,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["design"]
-    //路由组件
-    compile rootProject.ext.dependencies["arouter-api"]
-    compile project(':common-base')
-    compile project(':common-router')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation project(':common-base')
 
     //示例组件
-    compile project(':sample-basis')
-    compile project(':sample-color')
-    compile project(':sample-native')
-    compile project(':sample-texture')
-    compile project(':sample-camera')
-    compile project(':sample-filter')
+    implementation project(':sample-basis')
+    implementation project(':sample-color')
+    implementation project(':sample-native')
+    implementation project(':sample-texture')
+    implementation project(':sample-camera')
+    implementation project(':sample-filter')
 }

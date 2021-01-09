@@ -1,13 +1,13 @@
 package com.onzhou.opengles.main;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.renderer.CameraSurfaceRenderer;
 
@@ -15,12 +15,16 @@ import com.onzhou.opengles.renderer.CameraSurfaceRenderer;
  * @anchor: andy
  * @date: 18-11-10
  */
-@Route(path = RouteTable.PAGE_CAMERA)
 public class CameraSurfaceActivity extends AbsBaseActivity {
 
     private static final int PERMISSION_CODE = 100;
 
     private GLSurfaceView mGLSurfaceView;
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, CameraSurfaceActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

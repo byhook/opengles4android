@@ -1,30 +1,34 @@
 package com.onzhou.opengles.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.filter.GrayFilter;
 import com.onzhou.opengles.filter.OriginFilter;
 import com.onzhou.opengles.filter.QuarterMirrorFilter;
-import com.onzhou.opengles.view.OpenGLView;
 import com.onzhou.opengles.filter.R;
+import com.onzhou.opengles.view.OpenGLView;
 
 /**
  * @anchor: andy
  * @date: 2019-03-15
  * @description:
  */
-@Route(path = RouteTable.PAGE_FILTER)
 public class FilterActivity extends AbsBaseActivity {
 
     private ViewGroup mRootLayer;
 
     private OpenGLView mGlView;
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, FilterActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

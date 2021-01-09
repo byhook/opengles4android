@@ -1,12 +1,9 @@
 package com.onzhou.opengles.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.onzhou.common.table.RouteTable;
-import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
 import com.onzhou.opengles.texture.TextureRenderer;
 
@@ -14,8 +11,12 @@ import com.onzhou.opengles.texture.TextureRenderer;
  * @anchor: andy
  * @date: 18-11-10
  */
-@Route(path = RouteTable.PAGE_TEXTURE)
 public class TextureActivity extends AbsGLSurfaceActivity {
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, TextureActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected GLSurfaceView.Renderer bindRenderer() {

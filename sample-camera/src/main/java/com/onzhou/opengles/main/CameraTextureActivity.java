@@ -2,13 +2,13 @@ package com.onzhou.opengles.main;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.view.TextureView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.camera.CameraV1Pick;
 
 /**
@@ -22,6 +22,11 @@ public class CameraTextureActivity extends Activity {
     private TextureView mTextureView;
 
     private CameraV1Pick mCameraPick;
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, CameraTextureActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
