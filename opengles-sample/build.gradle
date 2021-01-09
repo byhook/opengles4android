@@ -46,6 +46,9 @@ dependencies {
     implementation rootProject.ext.dependencies["material"]
     implementation project(':common-base')
 
+    implementation project(':opengles3x-java')
+    implementation project(':opengles3x-cpp')
+
     //示例组件
     implementation project(':sample-basis')
     implementation project(':sample-color')
