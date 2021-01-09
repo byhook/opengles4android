@@ -1,8 +1,9 @@
 package com.onzhou.opengles.sample;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.main.CameraSurfaceActivity;

@@ -6,8 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.view.TextureView;
+
+import androidx.core.app.ActivityCompat;
 
 import com.onzhou.opengles.camera.CameraV1Pick;
 
