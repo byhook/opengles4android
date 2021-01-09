@@ -11,3 +11,4 @@ local.properties
 *.iml
 obj
 .externalNativeBuild
+.cxx
