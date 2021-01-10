@@ -1,12 +1,12 @@
-package com.onzhou.opengles.main;
+package com.handy.es3x.cpp.main;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.GLSurfaceView;
 
+import com.handy.es3x.cpp.renderer.NativeColorRenderer;
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
-import com.onzhou.opengles.color.NativeColorRenderer;
 
 /**
  * @anchor: andy
@@ -22,7 +22,7 @@ public class ColorActivity extends AbsGLSurfaceActivity {
 
     @Override
     protected GLSurfaceView.Renderer bindRenderer() {
-        return new NativeColorRenderer(Color.GRAY);
+        return new NativeColorRenderer(Color.BLUE);
     }
 
 }

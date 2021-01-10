@@ -1,5 +1,4 @@
 include ':opengles3x-cpp'
 include ':opengles3x-java'
 include ':common-base', ':sample-texture', ':sample-camera', ':sample-native', ':sample-filter', ':opengles-sample'
-include ':sample-color'
 include ':sample-basis'

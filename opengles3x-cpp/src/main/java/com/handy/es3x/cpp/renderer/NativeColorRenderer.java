@@ -1,10 +1,10 @@
-package com.onzhou.opengles.color;
+package com.handy.es3x.cpp.renderer;
 
-import android.graphics.Color;
 import android.opengl.GLSurfaceView;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+
 
 /**
  * @anchor: andy
@@ -14,7 +14,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class NativeColorRenderer implements GLSurfaceView.Renderer {
 
     static {
-        System.loadLibrary("native-color");
+        System.loadLibrary("native-es3x");
     }
 
     public native void surfaceCreated(int color);

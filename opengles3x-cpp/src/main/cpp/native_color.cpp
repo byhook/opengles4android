@@ -20,7 +20,7 @@ JNINativeMethod methods[] = {
  * @return
  */
 jint registerNativeMethod(JNIEnv *env) {
-    jclass cl = env->FindClass("com/onzhou/opengles/color/NativeColorRenderer");
+    jclass cl = env->FindClass("com/handy/es3x/cpp/renderer/NativeColorRenderer");
     if ((env->RegisterNatives(cl, methods, sizeof(methods) / sizeof(methods[0]))) < 0) {
         return -1;
     }

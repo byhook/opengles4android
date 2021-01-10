@@ -2,7 +2,7 @@ ext {
     android = [
             compileSdkVersion: 30,
             buildToolsVersion: "30.0.0",
-            applicationId    : "com.onzhou.opengles",
+            applicationId    : "com.handy.opengles",
             minSdkVersion    : 18,
             targetSdkVersion : 30,
             versionCode      : 1,

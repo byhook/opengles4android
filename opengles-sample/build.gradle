@@ -51,7 +51,6 @@ dependencies {
 
     //示例组件
     implementation project(':sample-basis')
-    implementation project(':sample-color')
     implementation project(':sample-native')
     implementation project(':sample-texture')
     implementation project(':sample-camera')
