@@ -9,9 +9,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions -Wa
 add_definitions("-DDYNAMIC_ES3")
 set(OPENGL_LIB GLESv3)
 
+file(GLOB native_files ${CMAKE_CURRENT_SOURCE_DIR}/src/main/cpp/*.cpp)
+
 add_library(${PROJECT_NAME}
         SHARED
-        ../opengles3x-cpp/src/main/cpp/native_color.cpp)
+        ${native_files})
 
 target_link_libraries(${PROJECT_NAME}
         ${OPENGL_LIB}

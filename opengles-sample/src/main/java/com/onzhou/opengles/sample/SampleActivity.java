@@ -5,12 +5,12 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.handy.es3x.cpp.main.ColorActivity;
+import com.handy.es3x.cpp.main.NativeImplActivity;
+import com.handy.es3x.java.main.JavaImplActivity;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.main.CameraSurfaceActivity;
 import com.onzhou.opengles.main.FilterActivity;
 import com.onzhou.opengles.main.NativeWindowActivity;
-import com.onzhou.opengles.main.SimpleActivity;
 import com.onzhou.opengles.main.TextureActivity;
 
 /**
@@ -27,11 +27,11 @@ public class SampleActivity extends AbsBaseActivity {
     }
 
     public void onBasisClick(View view) {
-        SimpleActivity.intentStart(this);
+        JavaImplActivity.intentStart(this);
     }
 
     public void onColorClick(View view) {
-        ColorActivity.intentStart(this);
+        NativeImplActivity.intentStart(this);
     }
 
     /**
