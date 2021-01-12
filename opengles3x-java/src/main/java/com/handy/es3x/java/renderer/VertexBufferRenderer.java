@@ -4,6 +4,7 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.java.R;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -19,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-02
  * @description: 顶点缓冲区
  */
-public class VertexBufferRenderer implements GLSurfaceView.Renderer {
+public class VertexBufferRenderer implements SurfaceRenderer {
 
     private static final String TAG = "VertexBufferRenderer";
 
@@ -58,7 +59,7 @@ public class VertexBufferRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
@@ -83,12 +84,12 @@ public class VertexBufferRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
         //6. 使用程序片段
         GLES30.glUseProgram(mProgram);
@@ -98,5 +99,10 @@ public class VertexBufferRenderer implements GLSurfaceView.Renderer {
 
         //8. 解绑VBO
         GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER,0);
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

@@ -4,6 +4,7 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.java.R;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -19,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-09
  * @description:
  */
-public class LineCubeRenderer implements GLSurfaceView.Renderer {
+public class LineCubeRenderer implements SurfaceRenderer {
 
     private final FloatBuffer vertexBuffer;
 
@@ -65,7 +66,7 @@ public class LineCubeRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
@@ -83,12 +84,12 @@ public class LineCubeRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
 
         //指定线宽
@@ -99,6 +100,11 @@ public class LineCubeRenderer implements GLSurfaceView.Renderer {
         GLES30.glDrawArrays(GLES30.GL_LINE_LOOP, 4, 4);
 
         GLES30.glDrawArrays(GLES30.GL_LINES, 8, 8);
+    }
+
+    @Override
+    public void onDestroy() {
 
     }
+
 }

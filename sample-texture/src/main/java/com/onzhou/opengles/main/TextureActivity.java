@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.opengl.GLSurfaceView;
 
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.texture.TextureRenderer;
 
 /**
@@ -19,7 +20,7 @@ public class TextureActivity extends AbsGLSurfaceActivity {
     }
 
     @Override
-    protected GLSurfaceView.Renderer bindRenderer() {
+    protected SurfaceRenderer bindRenderer() {
         return new TextureRenderer();
     }
 

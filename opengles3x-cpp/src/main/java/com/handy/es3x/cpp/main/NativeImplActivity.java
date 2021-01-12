@@ -6,6 +6,7 @@ import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.cpp.renderer.NativeRenderer;
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 
 /**
  * @anchor: andy
@@ -20,7 +21,7 @@ public class NativeImplActivity extends AbsGLSurfaceActivity {
     }
 
     @Override
-    protected GLSurfaceView.Renderer bindRenderer() {
+    protected SurfaceRenderer bindRenderer() {
         return new NativeRenderer();
     }
 

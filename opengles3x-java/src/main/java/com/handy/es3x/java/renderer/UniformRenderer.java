@@ -5,6 +5,7 @@ import android.opengl.GLSurfaceView;
 import android.util.Log;
 
 import com.handy.es3x.java.R;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -16,14 +17,14 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-02
  * @description:
  */
-public class UniformRenderer implements GLSurfaceView.Renderer {
+public class UniformRenderer implements SurfaceRenderer {
 
     private static final String TAG = "UniformRenderer";
 
     private int mProgram;
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
@@ -57,12 +58,17 @@ public class UniformRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

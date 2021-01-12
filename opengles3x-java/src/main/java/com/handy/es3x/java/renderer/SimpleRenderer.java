@@ -3,6 +3,7 @@ package com.handy.es3x.java.renderer;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ShaderUtils;
 
 import java.nio.ByteBuffer;
@@ -17,7 +18,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-02
  * @description:
  */
-public class SimpleRenderer implements GLSurfaceView.Renderer {
+public class SimpleRenderer implements SurfaceRenderer {
 
     private static final int POSITION_COMPONENT_COUNT = 3;
 
@@ -83,7 +84,7 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
 
@@ -97,12 +98,12 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
 
         //准备坐标数据
@@ -119,5 +120,10 @@ public class SimpleRenderer implements GLSurfaceView.Renderer {
         //禁止顶点数组的句柄
         GLES30.glDisableVertexAttribArray(0);
         GLES30.glDisableVertexAttribArray(1);
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

@@ -4,6 +4,7 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.java.R;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -19,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-02
  * @description:
  */
-public class EnableVertexRenderer implements GLSurfaceView.Renderer {
+public class EnableVertexRenderer implements SurfaceRenderer {
 
     private final FloatBuffer vertexBuffer, colorBuffer;
 
@@ -56,7 +57,7 @@ public class EnableVertexRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
@@ -69,12 +70,12 @@ public class EnableVertexRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
 
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
         //颜色数据都是一致的
@@ -90,5 +91,10 @@ public class EnableVertexRenderer implements GLSurfaceView.Renderer {
 
         //禁用顶点属性
         GLES30.glDisableVertexAttribArray(0);
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

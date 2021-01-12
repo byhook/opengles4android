@@ -4,6 +4,7 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.java.R;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -20,7 +21,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-09
  * @description: 基于索引法绘制立方体
  */
-public class IndicesCubeRenderer implements GLSurfaceView.Renderer {
+public class IndicesCubeRenderer implements SurfaceRenderer {
 
     private final FloatBuffer vertexBuffer, colorBuffer;
 
@@ -106,7 +107,7 @@ public class IndicesCubeRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
@@ -128,15 +129,19 @@ public class IndicesCubeRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
 
         GLES30.glDrawElements(GL10.GL_TRIANGLES, indices.length, GL10.GL_UNSIGNED_SHORT, indicesBuffer);
+    }
+
+    @Override
+    public void onDestroy() {
 
     }
 }

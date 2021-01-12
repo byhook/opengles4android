@@ -11,10 +11,10 @@
  * 动态注册
  */
 JNINativeMethod methods[] = {
-        {"surfaceCreated", "(I)V",  (void *) surfaceCreated},
-        {"surfaceChanged", "(II)V", (void *) surfaceChanged},
-        {"onDrawFrame",    "()V",   (void *) onDrawFrame},
-        {"onRelease",      "()V",   (void *) onRelease}
+        {"onNativeSurfaceCreated", "(I)V",  (void *) surfaceCreated},
+        {"onNativeSurfaceChanged", "(II)V", (void *) surfaceChanged},
+        {"onNativeDrawFrame",      "()V",   (void *) onDrawFrame},
+        {"onNativeRelease",        "()V",   (void *) onRelease}
 };
 
 /**

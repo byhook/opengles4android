@@ -11,6 +11,7 @@ import android.opengl.Matrix;
 import android.util.Log;
 
 import com.onzhou.opengles.core.AppCore;
+import com.onzhou.opengles.renderer.SurfaceRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 import com.onzhou.opengles.utils.TextureUtils;
@@ -28,7 +29,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-09
  * @description: 基于纹理贴图显示bitmap
  */
-public class TextureRenderer implements GLSurfaceView.Renderer {
+public class TextureRenderer implements SurfaceRenderer {
 
     private static final String TAG = "TextureRenderer";
 
@@ -102,7 +103,7 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
 
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated() {
         //设置背景颜色
         GLES30.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         //编译
@@ -118,7 +119,7 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
 
         final float aspectRatio = width > height ?
@@ -135,7 +136,7 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public void onDrawFrame() {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT);
 
         //使用程序片段
@@ -155,6 +156,10 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
 
         // 绘制
         GLES20.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length, GLES20.GL_UNSIGNED_SHORT, mVertexIndexBuffer);
+    }
+
+    @Override
+    public void onDestroy() {
 
     }
 }

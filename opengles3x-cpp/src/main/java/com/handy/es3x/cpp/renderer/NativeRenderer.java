@@ -2,6 +2,8 @@ package com.handy.es3x.cpp.renderer;
 
 import android.opengl.GLSurfaceView;
 
+import com.onzhou.opengles.renderer.SurfaceRenderer;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -10,40 +12,38 @@ import javax.microedition.khronos.opengles.GL10;
  * @date: 2018-11-02
  * @description:
  */
-public class NativeRenderer implements GLSurfaceView.Renderer {
+public class NativeRenderer implements SurfaceRenderer {
 
     static {
         System.loadLibrary("native-es3x");
     }
 
-    public native void surfaceCreated(int renderType);
+    public native void onNativeSurfaceCreated(int renderType);
 
-    public native void surfaceChanged(int width, int height);
+    public native void onNativeSurfaceChanged(int width, int height);
 
-    public native void onDrawFrame();
+    public native void onNativeDrawFrame();
 
-    public native void onRelease();
+    public native void onNativeRelease();
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        surfaceCreated(0);
+    public void onSurfaceCreated() {
+        onNativeSurfaceCreated(0);
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
-        surfaceChanged(width, height);
+    public void onSurfaceChanged(int width, int height) {
+        onNativeSurfaceChanged(width, height);
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
-        onDrawFrame();
+    public void onDrawFrame() {
+        onNativeDrawFrame();
     }
 
-    /**
-     * 销毁
-     */
+    @Override
     public void onDestroy(){
-        onRelease();
+        onNativeRelease();
     }
 
 }
