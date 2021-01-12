@@ -1,4 +1,4 @@
-package com.onzhou.opengles.api;
+package com.handy.es3x.java.api;
 
 import android.graphics.SurfaceTexture;
 
@@ -7,7 +7,7 @@ import android.graphics.SurfaceTexture;
  * @date: 2018-11-11
  * @description:
  */
-public interface ITextureRenderer {
+public interface TextureRenderer {
 
     void onSurfaceCreated();
 

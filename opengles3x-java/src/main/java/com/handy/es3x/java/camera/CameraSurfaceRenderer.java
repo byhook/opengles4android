@@ -1,4 +1,4 @@
-package com.onzhou.opengles.renderer;
+package com.handy.es3x.java.camera;
 
 import android.app.Activity;
 import android.graphics.ImageFormat;
@@ -7,18 +7,12 @@ import android.hardware.Camera;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.GLES30;
-import android.opengl.GLES31Ext;
 import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
-import android.util.Log;
 import android.view.Surface;
-import android.view.SurfaceHolder;
 
-import com.onzhou.opengles.camera.R;
-import com.onzhou.opengles.core.AppCore;
+import com.handy.es3x.java.R;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
-import com.onzhou.opengles.utils.TextureUtils;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

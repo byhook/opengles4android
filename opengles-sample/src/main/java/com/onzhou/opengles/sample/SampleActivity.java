@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import com.handy.es3x.cpp.main.NativeImplActivity;
 import com.handy.es3x.java.main.JavaImplActivity;
 import com.onzhou.opengles.base.AbsBaseActivity;
-import com.onzhou.opengles.main.CameraSurfaceActivity;
+import com.handy.es3x.java.main.CameraSurfaceActivity;
 import com.handy.es3x.java.main.FilterActivity;
 import com.handy.es3x.cpp.main.NativeWindowActivity;
 

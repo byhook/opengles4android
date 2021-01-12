@@ -1,12 +1,12 @@
-package com.onzhou.opengles.camera;
+package com.handy.es3x.java.camera;
 
 import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
-import android.util.Log;
 import android.view.Surface;
 
-import com.onzhou.opengles.api.ICamera;
+
+import com.handy.es3x.java.api.ICamera;
 
 import java.io.IOException;
 

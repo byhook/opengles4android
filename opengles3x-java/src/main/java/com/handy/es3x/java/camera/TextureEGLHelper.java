@@ -1,4 +1,4 @@
-package com.onzhou.opengles.camera;
+package com.handy.es3x.java.camera;
 
 import android.graphics.SurfaceTexture;
 import android.opengl.EGL14;
@@ -13,8 +13,6 @@ import android.os.Message;
 import android.view.TextureView;
 
 import androidx.annotation.IntDef;
-
-import com.onzhou.opengles.renderer.CameraTextureRenderer;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

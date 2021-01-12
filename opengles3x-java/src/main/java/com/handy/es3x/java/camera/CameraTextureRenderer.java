@@ -1,4 +1,4 @@
-package com.onzhou.opengles.renderer;
+package com.handy.es3x.java.camera;
 
 
 import android.graphics.SurfaceTexture;
@@ -6,8 +6,8 @@ import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.GLES30;
 
-import com.onzhou.opengles.api.ITextureRenderer;
-import com.onzhou.opengles.camera.R;
+import com.handy.es3x.java.R;
+import com.handy.es3x.java.api.TextureRenderer;
 import com.onzhou.opengles.utils.ResReadUtils;
 import com.onzhou.opengles.utils.ShaderUtils;
 
@@ -20,7 +20,7 @@ import java.nio.FloatBuffer;
  * @date: 2018-11-11
  * @description: 基于相机
  */
-public class CameraTextureRenderer implements ITextureRenderer {
+public class CameraTextureRenderer implements TextureRenderer {
 
     private FloatBuffer mVertexBuffer;
 
@@ -83,8 +83,8 @@ public class CameraTextureRenderer implements ITextureRenderer {
 
     @Override
     public void onSurfaceCreated() {
-        final int vertexShader = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.vertex_texture_shader));
-        final int fragmentShader = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.fragment_texture_shader));
+        final int vertexShader = ShaderUtils.compileVertexShader(ResReadUtils.readResource(R.raw.camera_vertex_texture_shader));
+        final int fragmentShader = ShaderUtils.compileFragmentShader(ResReadUtils.readResource(R.raw.camera_fragment_texture_shader));
         mShaderProgram = ShaderUtils.linkProgram(vertexShader, fragmentShader);
 
         aPositionLocation = GLES30.glGetAttribLocation(mShaderProgram, CameraTextureRenderer.POSITION_ATTRIBUTE);
