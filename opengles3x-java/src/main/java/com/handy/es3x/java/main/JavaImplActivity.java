@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.java.renderer.ColorCubeRenderer;
+import com.handy.es3x.java.renderer.TextureRenderer;
 import com.onzhou.opengles.base.AbsGLSurfaceActivity;
 import com.onzhou.opengles.renderer.SurfaceRenderer;
 
@@ -22,7 +23,7 @@ public class JavaImplActivity extends AbsGLSurfaceActivity {
 
     @Override
     protected SurfaceRenderer bindRenderer() {
-        return new ColorCubeRenderer();
+        return new TextureRenderer();
     }
 
 }

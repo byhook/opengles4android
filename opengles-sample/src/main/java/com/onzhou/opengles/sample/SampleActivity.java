@@ -9,9 +9,8 @@ import com.handy.es3x.cpp.main.NativeImplActivity;
 import com.handy.es3x.java.main.JavaImplActivity;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.main.CameraSurfaceActivity;
-import com.onzhou.opengles.main.FilterActivity;
-import com.onzhou.opengles.main.NativeWindowActivity;
-import com.onzhou.opengles.main.TextureActivity;
+import com.handy.es3x.java.main.FilterActivity;
+import com.handy.es3x.cpp.main.NativeWindowActivity;
 
 /**
  * @anchor: andy
@@ -49,7 +48,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onTextureClick(View view) {
-        TextureActivity.intentStart(this);
+        JavaImplActivity.intentStart(this);
     }
 
     /**

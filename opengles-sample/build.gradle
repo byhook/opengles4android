@@ -50,8 +50,5 @@ dependencies {
     implementation project(':opengles3x-cpp')
 
     //示例组件
-    implementation project(':sample-native')
-    implementation project(':sample-texture')
     implementation project(':sample-camera')
-    implementation project(':sample-filter')
 }

@@ -3,9 +3,8 @@
     package="com.handy.es3x.cpp">
 
     <application>
-
         <activity android:name=".main.NativeImplActivity" />
-
+        <activity android:name=".main.NativeWindowActivity" />
     </application>
 
 </manifest>
