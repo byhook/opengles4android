@@ -6,6 +6,7 @@
         <activity android:name=".main.JavaImplActivity" />
         <activity android:name=".main.CameraSurfaceActivity" />
         <activity android:name=".main.CameraTextureActivity" />
+        <activity android:name=".main.FilterActivity" />
     </application>
 
 </manifest>

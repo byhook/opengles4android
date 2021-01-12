@@ -3,7 +3,7 @@ package com.handy.es3x.java.filter;
 import android.opengl.GLES30;
 
 import com.handy.es3x.java.R;
-import com.onzhou.opengles.utils.ResReadUtils;
+import com.handy.common.utils.ResReadUtils;
 
 /**
  * @anchor: andy

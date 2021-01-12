@@ -1,11 +1,6 @@
-if (library.toBoolean()) {
-    apply plugin: 'com.android.library'
-} else {
-    apply plugin: 'com.android.application'
-}
+apply plugin: 'com.android.library'
 
 android {
-
     //构建版本
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -17,18 +12,19 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            abiFilters "armeabi-v7a","arm64-v8a"
-        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     dexOptions {
@@ -42,14 +38,7 @@ android {
 
     sourceSets {
         main {
-            //清单配置
-            if (library.toBoolean()) {
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
-            }
             //库地址
-            java.srcDirs = ['src/main/java', 'src/main/aidl']
             jniLibs.srcDirs = ['libs']
         }
     }
@@ -63,5 +52,5 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies["androidx-junit"]
     androidTestImplementation rootProject.ext.dependencies["espresso-core"]
 
-    implementation project(':common-base')
+    implementation project(':common')
 }

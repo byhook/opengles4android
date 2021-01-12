@@ -1,16 +1,12 @@
 package com.handy.es3x.java.renderer;
 
 import android.opengl.GLES30;
-import android.opengl.GLSurfaceView;
 import android.util.Log;
 
 import com.handy.es3x.java.R;
-import com.onzhou.opengles.renderer.SurfaceRenderer;
-import com.onzhou.opengles.utils.ResReadUtils;
-import com.onzhou.opengles.utils.ShaderUtils;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import com.handy.common.renderer.SurfaceRenderer;
+import com.handy.common.utils.ResReadUtils;
+import com.handy.common.utils.ShaderUtils;
 
 /**
  * @anchor: andy

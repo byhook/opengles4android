@@ -1,7 +1,6 @@
 package com.handy.es3x.java.camera;
 
 import android.app.Activity;
-import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.opengl.GLES11Ext;
@@ -11,8 +10,8 @@ import android.opengl.GLSurfaceView;
 import android.view.Surface;
 
 import com.handy.es3x.java.R;
-import com.onzhou.opengles.utils.ResReadUtils;
-import com.onzhou.opengles.utils.ShaderUtils;
+import com.handy.common.utils.ResReadUtils;
+import com.handy.common.utils.ShaderUtils;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -22,8 +21,6 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-
-import static android.opengl.GLES11Ext.GL_TEXTURE_EXTERNAL_OES;
 
 /**
  * @anchor: andy

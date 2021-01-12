@@ -12,7 +12,7 @@ import com.handy.es3x.java.filter.GrayFilter;
 import com.handy.es3x.java.filter.OriginFilter;
 import com.handy.es3x.java.filter.QuarterMirrorFilter;
 import com.handy.es3x.java.view.OpenGLView;
-import com.onzhou.opengles.base.AbsBaseActivity;
+import com.handy.common.base.AbsBaseActivity;
 
 /**
  * @anchor: andy

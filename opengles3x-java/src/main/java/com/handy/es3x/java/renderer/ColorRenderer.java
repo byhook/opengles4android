@@ -2,11 +2,9 @@ package com.handy.es3x.java.renderer;
 
 import android.graphics.Color;
 import android.opengl.GLES30;
-import android.opengl.GLSurfaceView;
 
-import com.onzhou.opengles.renderer.SurfaceRenderer;
+import com.handy.common.renderer.SurfaceRenderer;
 
-import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 /**

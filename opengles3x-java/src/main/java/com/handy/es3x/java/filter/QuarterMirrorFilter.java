@@ -1,7 +1,7 @@
 package com.handy.es3x.java.filter;
 
 import com.handy.es3x.java.R;
-import com.onzhou.opengles.utils.ResReadUtils;
+import com.handy.common.utils.ResReadUtils;
 
 /**
  * @anchor: andy

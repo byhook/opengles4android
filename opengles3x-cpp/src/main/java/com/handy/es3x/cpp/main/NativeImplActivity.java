@@ -2,11 +2,10 @@ package com.handy.es3x.cpp.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.opengl.GLSurfaceView;
 
 import com.handy.es3x.cpp.renderer.NativeRenderer;
-import com.onzhou.opengles.base.AbsGLSurfaceActivity;
-import com.onzhou.opengles.renderer.SurfaceRenderer;
+import com.handy.common.base.AbsGLSurfaceActivity;
+import com.handy.common.renderer.SurfaceRenderer;
 
 /**
  * @anchor: andy

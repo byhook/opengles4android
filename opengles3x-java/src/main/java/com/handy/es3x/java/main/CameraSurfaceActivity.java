@@ -10,7 +10,7 @@ import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 
 import com.handy.es3x.java.camera.CameraSurfaceRenderer;
-import com.onzhou.opengles.base.AbsBaseActivity;
+import com.handy.common.base.AbsBaseActivity;
 
 /**
  * @anchor: andy

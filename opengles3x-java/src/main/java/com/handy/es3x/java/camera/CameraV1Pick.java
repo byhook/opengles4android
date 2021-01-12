@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.TextureView;
 
 import com.handy.es3x.java.api.ICamera;
-import com.onzhou.opengles.utils.TextureUtils;
+import com.handy.common.utils.TextureUtils;
 
 /**
  * @anchor: andy

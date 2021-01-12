@@ -1,29 +1,20 @@
 package com.handy.es3x.java.renderer;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLES30;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLUtils;
 import android.opengl.Matrix;
-import android.util.Log;
 
 import com.handy.es3x.java.R;
-import com.onzhou.opengles.core.AppCore;
-import com.onzhou.opengles.renderer.SurfaceRenderer;
-import com.onzhou.opengles.utils.ResReadUtils;
-import com.onzhou.opengles.utils.ShaderUtils;
-import com.onzhou.opengles.utils.TextureUtils;
+import com.handy.common.core.AppCore;
+import com.handy.common.renderer.SurfaceRenderer;
+import com.handy.common.utils.ResReadUtils;
+import com.handy.common.utils.ShaderUtils;
+import com.handy.common.utils.TextureUtils;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 /**
  * @anchor: andy

@@ -8,8 +8,8 @@ import android.opengl.GLES30;
 
 import com.handy.es3x.java.R;
 import com.handy.es3x.java.api.TextureRenderer;
-import com.onzhou.opengles.utils.ResReadUtils;
-import com.onzhou.opengles.utils.ShaderUtils;
+import com.handy.common.utils.ResReadUtils;
+import com.handy.common.utils.ShaderUtils;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

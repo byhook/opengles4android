@@ -5,11 +5,11 @@ import android.opengl.GLES30;
 import android.opengl.Matrix;
 
 import com.handy.es3x.java.R;
-import com.onzhou.opengles.core.AppCore;
-import com.onzhou.opengles.utils.LogUtils;
-import com.onzhou.opengles.utils.ResReadUtils;
-import com.onzhou.opengles.utils.ShaderUtils;
-import com.onzhou.opengles.utils.TextureUtils;
+import com.handy.common.core.AppCore;
+import com.handy.common.utils.LogUtils;
+import com.handy.common.utils.ResReadUtils;
+import com.handy.common.utils.ShaderUtils;
+import com.handy.common.utils.TextureUtils;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

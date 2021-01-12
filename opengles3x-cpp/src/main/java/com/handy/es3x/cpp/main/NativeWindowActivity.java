@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.handy.es3x.cpp.R;
 import com.handy.es3x.cpp.window.NativeWindowSample;
-import com.onzhou.opengles.base.AbsBaseActivity;
+import com.handy.common.base.AbsBaseActivity;
 
 /**
  * @anchor: andy

@@ -1,11 +1,6 @@
 package com.handy.es3x.cpp.renderer;
 
-import android.opengl.GLSurfaceView;
-
-import com.onzhou.opengles.renderer.SurfaceRenderer;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import com.handy.common.renderer.SurfaceRenderer;
 
 /**
  * @anchor: andy
