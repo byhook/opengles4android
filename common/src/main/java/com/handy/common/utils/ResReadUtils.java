@@ -24,11 +24,12 @@ public class ResReadUtils {
      */
     public static String readResource(int resourceId) {
         StringBuilder builder = new StringBuilder();
+        BufferedReader bufferedReader = null;
         try {
             InputStream inputStream = AppCore.getInstance().getResources().openRawResource(resourceId);
             InputStreamReader streamReader = new InputStreamReader(inputStream);
 
-            BufferedReader bufferedReader = new BufferedReader(streamReader);
+            bufferedReader = new BufferedReader(streamReader);
             String textLine;
             while ((textLine = bufferedReader.readLine()) != null) {
                 builder.append(textLine);
@@ -38,6 +39,8 @@ public class ResReadUtils {
             e.printStackTrace();
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
+        } finally {
+            IOUtils.close(bufferedReader);
         }
         return builder.toString();
     }
