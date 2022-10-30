@@ -23,12 +23,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile rootProject.ext.dependencies["junit"]
-    compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["design"]
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation rootProject.ext.dependencies["junit"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
     //路由组件
-    compile rootProject.ext.dependencies["arouter-api"]
+    implementation rootProject.ext.dependencies["arouter-api"]
 
-    compile project(':common-base')
+    implementation project(':common-base')
 }

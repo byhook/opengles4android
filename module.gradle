@@ -62,15 +62,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile rootProject.ext.dependencies["junit"]
-    compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["design"]
-    compile rootProject.ext.dependencies["annotation"]
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation rootProject.ext.dependencies["junit"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["annotation"]
 
-    compile project(':common-base')
-    compile project(':common-router')
+    implementation project(':common-base')
+    implementation project(':common-router')
 
-    compile rootProject.ext.dependencies["arouter-api"]
+    implementation rootProject.ext.dependencies["arouter-api"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }
