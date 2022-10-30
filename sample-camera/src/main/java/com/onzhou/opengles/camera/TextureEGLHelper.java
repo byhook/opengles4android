@@ -10,8 +10,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.IntDef;
 import android.view.TextureView;
+
+import androidx.annotation.IntDef;
 
 import com.onzhou.opengles.renderer.CameraTextureRenderer;
 

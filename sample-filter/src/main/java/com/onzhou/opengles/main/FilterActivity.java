@@ -5,8 +5,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.onzhou.common.table.RouteTable;
 import com.onzhou.opengles.base.AbsBaseActivity;
 import com.onzhou.opengles.filter.GrayFilter;
 import com.onzhou.opengles.filter.OriginFilter;
@@ -19,7 +17,6 @@ import com.onzhou.opengles.filter.R;
  * @date: 2019-03-15
  * @description:
  */
-@Route(path = RouteTable.PAGE_FILTER)
 public class FilterActivity extends AbsBaseActivity {
 
     private ViewGroup mRootLayer;

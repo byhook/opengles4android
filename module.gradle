@@ -8,7 +8,6 @@ android {
 
     //构建版本
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
     //默认的配置
     defaultConfig {
 
@@ -63,14 +62,13 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation rootProject.ext.dependencies["junit"]
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation rootProject.ext.dependencies["design"]
-    implementation rootProject.ext.dependencies["annotation"]
+    implementation "androidx.core:core-ktx:${versions.coreKtxVersion}"
+    implementation "androidx.appcompat:appcompat:${versions.appcompatVersion}"
+    implementation "com.google.android.material:material:${versions.materialVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayoutVersion}"
+    testImplementation "junit:junit:${versions.junitVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitExtVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espressoVersion}"
 
     implementation project(':common-base')
-    implementation project(':common-router')
-
-    implementation rootProject.ext.dependencies["arouter-api"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

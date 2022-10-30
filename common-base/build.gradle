@@ -3,7 +3,6 @@ apply plugin: 'com.android.library'
 android {
     //构建版本
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
     //默认的配置
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -24,7 +23,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation rootProject.ext.dependencies["junit"]
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation rootProject.ext.dependencies["design"]
+    implementation "androidx.core:core-ktx:${versions.coreKtxVersion}"
+    implementation "androidx.appcompat:appcompat:${versions.appcompatVersion}"
+
+    testImplementation "junit:junit:${versions.junitVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitExtVersion}"
 }

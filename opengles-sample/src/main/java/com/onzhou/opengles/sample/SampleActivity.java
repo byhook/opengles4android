@@ -1,12 +1,12 @@
 package com.onzhou.opengles.sample;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.onzhou.common.router.PageRouter;
-import com.onzhou.common.table.RouteTable;
+import androidx.annotation.Nullable;
+
 import com.onzhou.opengles.base.AbsBaseActivity;
+
 
 /**
  * @anchor: andy
@@ -22,11 +22,11 @@ public class SampleActivity extends AbsBaseActivity {
     }
 
     public void onBasisClick(View view) {
-        PageRouter.getInstance().routeBasisPage();
+
     }
 
     public void onColorClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_COLOR);
+
     }
 
     /**
@@ -35,7 +35,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onNativeClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_NATIVE);
+
     }
 
     /**
@@ -44,7 +44,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onTextureClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_TEXTURE);
+
     }
 
     /**
@@ -53,7 +53,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onCameraClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_CAMERA);
+
     }
 
     /**
@@ -62,6 +62,6 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onFilterClick(View view) {
-        PageRouter.getInstance().routePage(RouteTable.PAGE_FILTER);
+
     }
 }

@@ -1,3 +1,9 @@
-include ':common-base', ':sample-texture', ':sample-camera', ':sample-native', ':sample-filter', ':opengles-sample', ':common-router'
+include ':opengles-sample'
+include ':sample-texture'
+include ':sample-camera'
+include ':sample-native'
+include ':sample-filter'
 include ':sample-color'
 include ':sample-basis'
+
+include ':common-base'

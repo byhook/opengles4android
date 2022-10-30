@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     //构建版本
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
     //默认的配置
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -28,14 +27,16 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation rootProject.ext.dependencies["design"]
-    //路由组件
-    implementation rootProject.ext.dependencies["arouter-api"]
-    implementation project(':common-base')
-    implementation project(':common-router')
 
+    implementation "androidx.core:core-ktx:${versions.coreKtxVersion}"
+    implementation "androidx.appcompat:appcompat:${versions.appcompatVersion}"
+    implementation "com.google.android.material:material:${versions.materialVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayoutVersion}"
+    testImplementation "junit:junit:${versions.junitVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitExtVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espressoVersion}"
+
+    implementation project(':common-base')
     //示例组件
     implementation project(':sample-basis')
     implementation project(':sample-color')

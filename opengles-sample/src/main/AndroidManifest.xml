@@ -16,7 +16,9 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label">
 
-        <activity android:name=".SampleActivity">
+        <activity
+            android:name=".SampleActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
