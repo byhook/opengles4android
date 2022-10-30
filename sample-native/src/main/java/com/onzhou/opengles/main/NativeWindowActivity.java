@@ -1,5 +1,7 @@
 package com.onzhou.opengles.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -33,6 +35,11 @@ public class NativeWindowActivity extends AbsBaseActivity {
     private NativeWindowSample mNativeWindowSample;
 
     private SurfaceView mSurfaceView;
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, NativeWindowActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

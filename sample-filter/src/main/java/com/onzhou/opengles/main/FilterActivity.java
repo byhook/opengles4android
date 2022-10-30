@@ -1,5 +1,7 @@
 package com.onzhou.opengles.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,11 @@ public class FilterActivity extends AbsBaseActivity {
     private ViewGroup mRootLayer;
 
     private OpenGLView mGlView;
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, FilterActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

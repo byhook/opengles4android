@@ -1,6 +1,8 @@
 package com.onzhou.opengles.main;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -19,6 +21,11 @@ public class CameraSurfaceActivity extends AbsBaseActivity {
     private static final int PERMISSION_CODE = 100;
 
     private GLSurfaceView mGLSurfaceView;
+
+    public static void intentStart(Context context) {
+        Intent intent = new Intent(context, CameraSurfaceActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

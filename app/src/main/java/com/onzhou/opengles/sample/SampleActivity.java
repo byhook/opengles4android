@@ -1,11 +1,18 @@
 package com.onzhou.opengles.sample;
 
+import android.app.NativeActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.onzhou.opengles.base.AbsBaseActivity;
+import com.onzhou.opengles.main.CameraSurfaceActivity;
+import com.onzhou.opengles.main.ColorActivity;
+import com.onzhou.opengles.main.FilterActivity;
+import com.onzhou.opengles.main.NativeWindowActivity;
+import com.onzhou.opengles.main.SimpleActivity;
+import com.onzhou.opengles.main.TextureActivity;
 
 
 /**
@@ -22,11 +29,11 @@ public class SampleActivity extends AbsBaseActivity {
     }
 
     public void onBasisClick(View view) {
-
+        SimpleActivity.intentStart(this);
     }
 
     public void onColorClick(View view) {
-
+        ColorActivity.intentStart(this);
     }
 
     /**
@@ -35,7 +42,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onNativeClick(View view) {
-
+        NativeWindowActivity.intentStart(this);
     }
 
     /**
@@ -44,7 +51,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onTextureClick(View view) {
-
+        TextureActivity.intentStart(this);
     }
 
     /**
@@ -53,7 +60,7 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onCameraClick(View view) {
-
+        CameraSurfaceActivity.intentStart(this);
     }
 
     /**
@@ -62,6 +69,6 @@ public class SampleActivity extends AbsBaseActivity {
      * @param view
      */
     public void onFilterClick(View view) {
-
+        FilterActivity.intentStart(this);
     }
 }
